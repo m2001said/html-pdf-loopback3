@@ -1,0 +1,30 @@
+{
+  "name": "report",
+  "plural": "reports",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "username": {
+      "type": "string"
+    },
+    "issueDate": {
+      "type": "string"
+    },
+    "heroLogo": {
+      "type": "string"
+    },
+    "rightCheck": {
+      "type": "string"
+    },
+    "backgroundSmallTitle": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
