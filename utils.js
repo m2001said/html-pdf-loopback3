@@ -1,38 +1,21 @@
-const pdf = require("pdf-creator-node");
-const fs = require("fs");
+const puppeteer = require("puppeteer");
 const path = require("path");
 
-const generatePdf = (templatePath, data) => {
-  const html = fs.readFileSync(templatePath, "utf8");
-
-  const options = {
+const generatePdf = async (html) => {
+  const browser = await puppeteer.launch(); // Launch the browser
+  const page = await browser.newPage(); // Open a new page
+  await page.setContent(html, { waitUntil: "networkidle0" }); // Set the HTML content
+  const pdfBuffer = await page.pdf({
     format: "A4",
-    orientation: "portrait",
-    border: "10mm",
-    header: {
-      height: "20mm",
-      contents: '<div style="text-align: center;">Header</div>',
-    },
-    footer: {
-      height: "20mm",
-      contents: {
-        default:
-          '<span style="color: #444;">{{page}}</span>/<span>{{pages}}</span>', // fallback value
-      },
-    },
-  };
-
-  const document = {
-    html: html,
-    data: data,
-    path: "./output.pdf", // Save the PDF to this path
-    type: "",
-  };
-
-  return pdf.create(document, options);
+    printBackground: true,
+    landscape: false,
+  }); // Generate PDF as a buffer
+  await browser.close(); // Close the browser
+  return pdfBuffer; // Return the buffer
 };
 
 const IMGToURI = (imgName) => {
+  const fs = require("fs");
   const base = path.resolve(__dirname, "./server/images/");
   const img = fs.readFileSync(`${base}/${imgName}`);
   const img64Image = Buffer.from(img).toString("base64");

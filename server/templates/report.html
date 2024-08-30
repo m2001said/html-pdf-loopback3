@@ -1,18 +1,3 @@
-<!-- <html>
-  <head>
-    <meta charset="UTF-8" />
-  </head>
-  <body>
-    <h1>{{username}}'s Report</h1>
-    <p>Date: {{date}}</p>
-    <img src="{{heroLogo}}" alt="Logo" />
-    <img src="{{rightCheck}}" alt="Check" />
-    <img src="{{backgroundSmallTitle}}" alt="Background" />
-  </body>
-</html>
-
- -->
-
 <!DOCTYPE html>
 <html dir="rtl">
   <head>
@@ -26,7 +11,7 @@
 
     <style>
       /* --------------general styles ----------------- */
-      /* :root {
+      :root {
         --green: #3bae49;
         --green-light: #f0f9f1;
         --green-2: #006400;
@@ -38,7 +23,7 @@
         --grey: #828282;
         --grey-light: #f2f2f2;
         --grey-very-light: #f9f9f9;
-      } */
+      }
       * {
         margin: 0;
         padding: 0;
@@ -116,7 +101,7 @@
       .page-footer-number {
         width: 16px;
         height: 16px;
-        border: solid 0.1px #828282;
+        border: solid 0.1px var(--grey);
         border-radius: 50%;
       }
       .page-footer-number p {
@@ -124,7 +109,7 @@
       }
       .page-footer-text {
         font-size: 5.5px;
-        color: #828282;
+        color: var(--grey);
       }
 
       /* --------------  progress-circle-bar ----------------- */
@@ -147,8 +132,8 @@
       }
       /* --------------  page-1 ----------------- */
       .page-1 {
-        background: #3bae49;
-        color: #fff;
+        background: var(--green);
+        color: var(--white);
         justify-content: space-around;
         font-weight: bold;
       }
@@ -204,8 +189,8 @@
       .shadow-card,
       .card {
         display: flex;
-        border: solid 1px #f2f2f2;
-        box-shadow: 0px 4px 8px #f2f2f2;
+        border: solid 1px var(--grey-light);
+        box-shadow: 0px 4px 8px var(--grey-light);
         justify-content: space-between;
         padding: 10px;
         border-radius: 12px;
@@ -215,7 +200,7 @@
         box-shadow: none;
       }
       .header-result {
-        background: #f0f9f1;
+        background: var(--green-light);
         padding: 15px 20px;
         border-radius: 12px;
         gap: 5px;
@@ -237,22 +222,22 @@
         font-weight: bold;
       }
       .header-point-1 {
-        background: #f0f9f1;
-        color: #3bae49;
+        background: var(--green-light);
+        color: var(--green);
       }
       .header-point-2 {
-        background: #fff6ed;
-        color: #f6871f;
+        background: var(--orange-light);
+        color: var(--orange);
       }
       .header-point-3 {
-        background: #f2f2f2;
-        color: #828282;
+        background: var(--grey-light);
+        color: var(--grey);
       }
       .capacity-result {
         display: flex;
-        border: solid 1px #f2f2f2;
+        border: solid 1px var(--grey-light);
         border-radius: 12px;
-        background: #fff;
+        background: var(--white);
         padding: 15px;
         gap: 20px;
         justify-content: space-between;
@@ -279,7 +264,7 @@
 
       .capacity-desc {
         width: 300px;
-        background: #f9f9f9;
+        background: var(--grey-very-light);
         border-radius: 12px;
       }
       .capacity-desc p {
@@ -327,7 +312,7 @@
         background: var(--green-2-light);
       }
       .level-2 .level-color {
-        background: #006400;
+        background: var(--green-2);
       }
       .page-6-desc {
         font-size: 12px;
@@ -343,7 +328,7 @@
 
       /* -------- */
       .progress-bar-container {
-        background-color: #f2f2f2;
+        background-color: var(--grey-light);
         border-radius: 20px;
         width: 304px;
         height: 12px;
@@ -353,11 +338,11 @@
       }
 
       .progress-bar {
-        background-color: #006400;
+        background-color: var(--green-2);
         height: 100%;
         border-radius: 15px;
         font-weight: bold;
-        color: #fff;
+        color: var(--white);
         position: relative;
       }
       .progress-bar p {
@@ -366,7 +351,7 @@
       }
 
       .progress-bar-2 {
-        color: #006400;
+        color: var(--green-2);
         background-color: var(--green-2-light);
       }
 
@@ -387,7 +372,7 @@
         position: relative;
       }
       .page-7-card-num p {
-        color: #3bae49;
+        color: var(--green);
         position: absolute;
         bottom: 10px;
         right: 5px;
