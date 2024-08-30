@@ -2,7 +2,6 @@
 const utils = require("../../utils");
 const moment = require("moment");
 const path = require("path");
-const fs = require("fs");
 const pdf = require("pdf-creator-node");
 
 module.exports = function (report) {
@@ -14,72 +13,52 @@ module.exports = function (report) {
 
   report.generate = async (res) => {
     try {
-      // Correct the path to the template file
+      const data = {
+        date: moment().format("DD/MM/YYYY"),
+        username: "محمد خالد",
+        heroLogo: utils.IMGToURI("hero-logo.png"),
+        rightCheck: utils.IMGToURI("right-check.png"),
+        backgroundSmallTitle: utils.IMGToURI("background-small-title.jpg"),
+      };
+
       const templatePath = path.resolve(
         __dirname,
         "../../server/templates/report.html"
       );
-      const html = fs.readFileSync(templatePath, "utf8");
+
+      // Read the HTML template
+      const html = require("fs").readFileSync(templatePath, "utf8");
 
       const options = {
-        format: "A3",
+        format: "A4",
         orientation: "portrait",
         border: "10mm",
         header: {
-          height: "45mm",
-          contents:
-            '<div style="text-align: center;">Author: Shyam Hajare</div>',
+          height: "20mm",
+          contents: '<div style="text-align: center;">Header</div>',
         },
         footer: {
-          height: "28mm",
+          height: "20mm",
           contents: {
-            first: "Cover page",
-            2: "Second page", // Any page number is working. 1-based index
             default:
-              '<span style="color: #444;">{{page}}</span>/<span>{{pages}}</span>', // fallback value
-            last: "Last Page",
+              '<span style="color: #444;">{{page}}</span>/<span>{{pages}}</span>',
           },
         },
       };
 
       const document = {
         html: html,
-        data: {
-          date: moment().format("DD/MM/YYYY"),
-          username: "محمد خالد",
-          heroLogo: utils.IMGToURI("hero-logo.png"),
-          rightCheck: utils.IMGToURI("right-check.png"),
-          backgroundSmallTitle: utils.IMGToURI("background-small-title.jpg"),
-        },
-        path: "./output.pdf",
-        type: "",
+        data: data,
+        type: "buffer", // Set the type to 'buffer' to directly stream it
       };
 
-      pdf
-        .create(document, options)
-        .then((result) => {
-          console.log(result);
-          res.download(result.filename, "report.pdf", (err) => {
-            if (err) {
-              console.error("Error downloading PDF:", err.message);
-              if (!res.headersSent) {
-                res.status(500).send({
-                  error: "Failed to download PDF",
-                  details: err.message,
-                });
-              }
-            }
-          });
-        })
-        .catch((error) => {
-          console.error("Error generating PDF:", error.message);
-          if (!res.headersSent) {
-            res.status(500).send({
-              error: "Failed to generate PDF",
-              details: error.message,
-            });
-          }
-        });
+      // Generate the PDF as a buffer
+      const result = await pdf.create(document, options);
+
+      // Set headers and stream the PDF
+      res.setHeader("Content-type", "application/pdf");
+      res.setHeader("Content-Disposition", `attachment; filename=report.pdf`);
+      res.end(result, "binary");
     } catch (error) {
       console.error("Error generating PDF:", error.message);
       if (!res.headersSent) {
