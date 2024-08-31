@@ -405,8 +405,8 @@
     <section class="flex flex-col pdf-page page-1">
       <div class="flex flex-col">
         <img class="page-1-logo" src="<%= heroLogo %>" alt="logo" />
-        <p class="page-1-title">تقرير نتيجة مقياس الثقة بالنفس</p>
-        <p class="page-1-subtitle">برنامج ذاتك لتعزيز الثقة بالنفس</p>
+        <p class="page-1-title"><%= title %></p>
+        <p class="page-1-subtitle"><%= subtitle %></p>
       </div>
 
       <div class="flex flex-col">
@@ -420,47 +420,22 @@
       class="flex flex-col pdf-page"
       style="background-image: url(<%= backgroundSmallTitle %>)"
     >
-      <p class="page-title">حول البرنامج</p>
+      <p class="page-title"><%= aboutTitle %></p>
 
       <div class="flex flex-col page-2-content">
+        <% cards.forEach(function(card) { %>
         <div class="flex page-2-card">
           <img src="<%= rightCheck %>" alt="right check" />
-          <p class="page-description">
-            هذا البرنامج تم تطويره بعناية واحترافية عالية، مستندًا إلى أحدث
-            الأبحاث العلمية والتقنيات المبتكرة في مجال قياس وتطوير الثقة بالنفس،
-            كما بُذلت جهود كبيرة لضمان توافقه مع أفضل المعايير العالمية في مجال
-            القياس والتقويم، وقد تم تصميمه ليكون أداة دقيقة وشاملة تلبي
-            الاحتياجات التطويرية للأفراد في مجال الثقة بالنفس.
-          </p>
+          <p class="page-description"><%= card %></p>
         </div>
-        <div class="flex page-2-card">
-          <img src="<%= rightCheck %>" alt="right check" />
-          <p class="page-description">
-            تضمن هذا البرنامج مقياسًا لمعايير الثقة بالنفس، وقد تم تحكيم هذا
-            المقياس بموضوعية، ورُوجِع بدقة من قِبل علماء وخبراء متميزين في
-            مجالات متعددة، تشمل الصحة النفسية، والإرشاد النفسي، وعلم نفس
-            الشخصية، إضافة إلى القياس والتقويم، وقد أكدوا على تميز المقياس
-            وفعاليته، وأنه قادر على تقديم تقييم دقيق لمعايير الثقة بالنفس؛ مما
-            يجعله منافسا قويًا في السوق العالمي.
-          </p>
-        </div>
-        <div class="flex page-2-card">
-          <img src="<%= rightCheck %>" alt="right check" />
-          <p class="page-description">
-            الإصدار التجريبي السابق من هذا البرنامج تم تطبيقها على مجموعة من
-            الأفراد، الذين طُلب منهم تقييم البرنامج بدقة، وتحديد مستوى الرضا عن
-            نتائجه بكل موضوعية، وقد أبدوا إعجابهم بمستوى الدقة والتفصيل الذي
-            يوفره البرنامج، ومدى قدرته على تحسين الثقة بالنفس ومعالجة نقاط الضعف
-            المرتبطة بها بشكل متكامل وفعّال.
-          </p>
-        </div>
+        <% }); %>
       </div>
 
       <div class="flex page-footer">
         <div class="page-footer-number flex">
           <p>2</p>
         </div>
-        <p class="page-footer-text">تقرير نتيجة مقياس الثقة بالنفس.</p>
+        <p class="page-footer-text"><%= title %>.</p>
       </div>
     </section>
 
@@ -469,7 +444,7 @@
       class="flex flex-col pdf-page justify-start"
       style="background-image: url(<%= backgroundSmallTitle %>)"
     >
-      <p class="page-title">وصف نتيجتك</p>
+      <p class="page-title"><%= resultDescriptionTitle %></p>
 
       <div class="page-3-content">
         <p class="page-description">
@@ -485,7 +460,7 @@
         <div class="page-footer-number flex">
           <p>3</p>
         </div>
-        <p class="page-footer-text">تقرير نتيجة مقياس الثقة بالنفس.</p>
+        <p class="page-footer-text"><%= title %>.</p>
       </div>
     </section>
 
@@ -494,7 +469,7 @@
       class="flex flex-col pdf-page justify-start"
       style="background-image: url(<%= backgroundSmallTitle %>)"
     >
-      <p class="page-title">تفاصيل نقاط قوتك وضعفك</p>
+      <p class="page-title"><%= pointsTitle %></p>
 
       <div class="page-4-content flex flex-col page-6">
         <div class="shadow-card">
@@ -606,7 +581,7 @@
         <div class="page-footer-number flex">
           <p>4</p>
         </div>
-        <p class="page-footer-text">تقرير نتيجة مقياس الثقة بالنفس.</p>
+        <p class="page-footer-text"><%= title %>.</p>
       </div>
     </section>
     <!-- ------ page 5 ----------- -->
@@ -614,13 +589,13 @@
       class="flex flex-col pdf-page justify-start"
       style="background-image: url(<%= backgroundBigTitle %>)"
     >
-      <p class="page-title">تابع لتفاصيل نقاط قوتك وضعفك</p>
+      <p class="page-title"><%= pointsRestTitle %></p>
 
       <div class="flex page-footer">
         <div class="page-footer-number flex">
           <p>5</p>
         </div>
-        <p class="page-footer-text">تقرير نتيجة مقياس الثقة بالنفس.</p>
+        <p class="page-footer-text"><%= title %>.</p>
       </div>
     </section>
     <!-- ------ page 6 ----------- -->
@@ -628,7 +603,7 @@
       class="flex flex-col pdf-page justify-start"
       style="background-image: url(<%= backgroundBigTitle %>)"
     >
-      <p class="page-title">مستواك مقارنةً بنتائج المختبرين الآخرين</p>
+      <p class="page-title"><%= comparisonTitle %></p>
 
       <div class="page-6-content flex flex-col">
         <div class="shadow-card flex-col">
@@ -693,7 +668,7 @@
         <div class="page-footer-number flex">
           <p>6</p>
         </div>
-        <p class="page-footer-text">تقرير نتيجة مقياس الثقة بالنفس.</p>
+        <p class="page-footer-text"><%= title %>.</p>
       </div>
     </section>
     <!-- ------ page 7 ----------- -->
@@ -701,7 +676,7 @@
       class="flex flex-col pdf-page"
       style="background-image: url(<%= backgroundSmallTitle %>)"
     >
-      <p class="page-title">التوصيات التطويرية</p>
+      <p class="page-title"><%= developmentRecommendationsTitle %></p>
 
       <div class="flex flex-col page-7-content">
         <div class="flex items-start page-7-card">
@@ -753,7 +728,7 @@
         <div class="page-footer-number flex">
           <p>7</p>
         </div>
-        <p class="page-footer-text">تقرير نتيجة مقياس الثقة بالنفس.</p>
+        <p class="page-footer-text"><%= title %>.</p>
       </div>
     </section>
     <!-- ------ page 8 ----------- -->
@@ -761,7 +736,7 @@
       class="flex flex-col pdf-page"
       style="background-image: url(<%= backgroundSmallTitle %>)"
     >
-      <p class="page-title">الملاحظات</p>
+      <p class="page-title"><%= notesTitle %></p>
 
       <div class="flex flex-col page-8-content items-start">
         <div class="flex page-8-card">
@@ -797,7 +772,7 @@
         <div class="page-footer-number flex">
           <p>8</p>
         </div>
-        <p class="page-footer-text">تقرير نتيجة مقياس الثقة بالنفس.</p>
+        <p class="page-footer-text"><%= title %>.</p>
       </div>
     </section>
   </body>

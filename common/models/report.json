@@ -55,8 +55,36 @@
     "note4": {
       "type": "string"
     },
-    "treePapers": {
+    "title": {
       "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "aboutTitle": {
+      "type": "string"
+    },
+    "resultDescriptionTitle": {
+      "type": "string"
+    },
+    "pointsTitle": {
+      "type": "string"
+    },
+    "pointsRestTitle": {
+      "type": "string"
+    },
+    "comparisonTitle": {
+      "type": "string"
+    },
+    "developmentRecommendationsTitle": {
+      "type": "string"
+    },
+    "notesTitle": {
+      "type": "string"
+    },
+    "cards": {
+      "type": "array",
+      "itemType": "string"
     }
   },
   "validations": [],
