@@ -11,7 +11,7 @@
 
     <style>
       /* --------------general styles ----------------- */
-      /* :root {
+      :root {
         --green: #3bae49;
         --green-light: #f0f9f1;
         --green-2: #006400;
@@ -23,7 +23,7 @@
         --grey: #828282;
         --grey-light: #f2f2f2;
         --grey-very-light: #f9f9f9;
-      } */
+      }
       * {
         margin: 0;
         padding: 0;
@@ -41,13 +41,8 @@
         gap: 20px;
       }
 
-      /* @page {
-        size: portrait;
-        margin: 15%;
-      } */
       .pdf-page {
         page-break-after: always;
-        /* break-after: page; */
         width: 595px;
         height: 842px;
         background-size: contain;
@@ -92,24 +87,41 @@
       .gap-5 {
         gap: 5px;
       }
-      .page-footer {
+      body {
+        counter-reset: sectionCounter;
+      }
+      /* -------------footer------------ */
+      section {
+        counter-increment: sectionCounter;
+        position: relative;
+        page-break-after: always;
+      }
+      section::after {
+        content: counter(sectionCounter);
         position: absolute;
         bottom: 29px;
         right: 63px;
-        gap: 7px;
-      }
-      .page-footer-number {
+        font-size: 10px;
         width: 16px;
         height: 16px;
-        border: solid 0.1px #828282;
+        border: solid 0.1px var(--grey-light);
         border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
       }
-      .page-footer-number p {
-        font-size: 10px;
-      }
-      .page-footer-text {
+      section::before {
+        content: "<%= title %> ";
         font-size: 5.5px;
-        color: #828282;
+        color: var(--grey);
+        position: absolute;
+        bottom: 34px;
+        right: 85px;
+      }
+      section:first-child::before,
+      section:first-child::after {
+        content: none;
       }
 
       /* --------------  progress-circle-bar ----------------- */
@@ -132,8 +144,8 @@
       }
       /* --------------  page-1 ----------------- */
       .page-1 {
-        background: #3bae49;
-        color: #fff;
+        background: var(--green);
+        color: var(--white);
         justify-content: space-around;
         font-weight: bold;
       }
@@ -189,8 +201,8 @@
       .shadow-card,
       .card {
         display: flex;
-        border: solid 1px #f2f2f2;
-        box-shadow: 0px 4px 8px #f2f2f2;
+        border: solid 1px var(--grey-light);
+        box-shadow: 0px 4px 8px var(--grey-light);
         justify-content: space-between;
         padding: 10px;
         border-radius: 12px;
@@ -200,7 +212,7 @@
         box-shadow: none;
       }
       .header-result {
-        background: #f0f9f1;
+        background: var(--green-light);
         padding: 15px 20px;
         border-radius: 12px;
         gap: 5px;
@@ -221,23 +233,27 @@
       .header-point span {
         font-weight: bold;
       }
+      .header-point img {
+        width: 7px;
+        height: 7px;
+      }
       .header-point-1 {
-        background: #f0f9f1;
-        color: #3bae49;
+        background: var(--green-light);
+        color: var(--green);
       }
       .header-point-2 {
-        background: #fff6ed;
-        color: #f6871f;
+        background: var(--orange-light);
+        color: var(--orange);
       }
       .header-point-3 {
-        background: #f2f2f2;
-        color: #828282;
+        background: var(--grey-light);
+        color: var(--grey);
       }
       .capacity-result {
         display: flex;
-        border: solid 1px #f2f2f2;
+        border: solid 1px var(--grey-light);
         border-radius: 12px;
-        background: #fff;
+        background: var(--white);
         padding: 15px;
         gap: 20px;
         justify-content: space-between;
@@ -264,7 +280,7 @@
 
       .capacity-desc {
         width: 300px;
-        background: #f9f9f9;
+        background: var(--grey-very-light);
         border-radius: 12px;
       }
       .capacity-desc p {
@@ -283,9 +299,15 @@
       .percentage-result {
         border: 1px solid red;
         display: flex;
+        align-items: center;
+        justify-content: center;
         gap: 2px;
         border-radius: 20px;
         padding: 2px 7px;
+      }
+      .percentage-result img {
+        width: 6px;
+        height: 9px;
       }
       .shadow-card .percentage-result p {
         font-size: 14px;
@@ -312,7 +334,7 @@
         background: var(--green-2-light);
       }
       .level-2 .level-color {
-        background: #006400;
+        background: var(--green-2);
       }
       .page-6-desc {
         font-size: 12px;
@@ -328,7 +350,7 @@
 
       /* -------- */
       .progress-bar-container {
-        background-color: #f2f2f2;
+        background-color: var(--grey-light);
         border-radius: 20px;
         width: 304px;
         height: 12px;
@@ -338,11 +360,11 @@
       }
 
       .progress-bar {
-        background-color: #006400;
+        background-color: var(--green-2);
         height: 100%;
         border-radius: 15px;
         font-weight: bold;
-        color: #fff;
+        color: var(--white);
         position: relative;
       }
       .progress-bar p {
@@ -351,7 +373,7 @@
       }
 
       .progress-bar-2 {
-        color: #006400;
+        color: var(--green-2);
         background-color: var(--green-2-light);
       }
 
@@ -371,8 +393,12 @@
         font-weight: bold;
         position: relative;
       }
+      .page-7-card-num img {
+        width: 40px;
+        height: 29px;
+      }
       .page-7-card-num p {
-        color: #3bae49;
+        color: var(--green);
         position: absolute;
         bottom: 10px;
         right: 5px;
@@ -382,69 +408,323 @@
       .page-8-content {
         gap: 50px;
       }
+      .page-8-card {
+        gap: 15px;
+      }
+      .page-8-card img {
+        width: 52px;
+        height: 52px;
+      }
     </style>
   </head>
   <body>
-    <!-- ------ page 1 ----------- -->
+    <!-- ------  الصفحة الرئيسية ----------- -->
     <section class="flex flex-col pdf-page page-1">
       <div class="flex flex-col">
         <img class="page-1-logo" src="<%= heroLogo %>" alt="logo" />
-        <p class="page-1-title">تقرير نتيجة مقياس الثقة بالنفس</p>
-        <p class="page-1-subtitle">برنامج ذاتك لتعزيز الثقة بالنفس</p>
+        <p class="page-1-title"><%= title %></p>
+        <p class="page-1-subtitle"><%= subtitle %></p>
       </div>
 
       <div class="flex flex-col">
-        <p class="page-1-user">صاحب التقرير: <%= username %></p>
-        <p class="page-1-date">تاريخ الإصدار: <%= date %></p>
+        <p class="page-1-user"><%= usernameTitle %> : <%= username %></p>
+        <p class="page-1-date"><%= dateTitle %> : <%= date %></p>
       </div>
     </section>
 
-    <!-- ------ page 2 ----------- -->
+    <!-- ------  حول البرنامج----------- -->
     <section
       class="flex flex-col pdf-page"
       style="background-image: url(<%= backgroundSmallTitle %>)"
     >
-      <p class="page-title">حول البرنامج</p>
+      <p class="page-title"><%= aboutTitle %></p>
 
       <div class="flex flex-col page-2-content">
+        <% cards.forEach(function(card) { %>
         <div class="flex page-2-card">
           <img src="<%= rightCheck %>" alt="right check" />
-          <p class="page-description">
-            هذا البرنامج تم تطويره بعناية واحترافية عالية، مستندًا إلى أحدث
-            الأبحاث العلمية والتقنيات المبتكرة في مجال قياس وتطوير الثقة بالنفس،
-            كما بُذلت جهود كبيرة لضمان توافقه مع أفضل المعايير العالمية في مجال
-            القياس والتقويم، وقد تم تصميمه ليكون أداة دقيقة وشاملة تلبي
-            الاحتياجات التطويرية للأفراد في مجال الثقة بالنفس.
-          </p>
+          <p class="page-description"><%= card %></p>
         </div>
-        <div class="flex page-2-card">
-          <img src="<%= rightCheck %>" alt="right check" />
-          <p class="page-description">
-            تضمن هذا البرنامج مقياسًا لمعايير الثقة بالنفس، وقد تم تحكيم هذا
-            المقياس بموضوعية، ورُوجِع بدقة من قِبل علماء وخبراء متميزين في
-            مجالات متعددة، تشمل الصحة النفسية، والإرشاد النفسي، وعلم نفس
-            الشخصية، إضافة إلى القياس والتقويم، وقد أكدوا على تميز المقياس
-            وفعاليته، وأنه قادر على تقديم تقييم دقيق لمعايير الثقة بالنفس؛ مما
-            يجعله منافسا قويًا في السوق العالمي.
-          </p>
+        <% }); %>
+      </div>
+    </section>
+
+    <!-- ------  وصف نتيجتك ----------- -->
+    <% if (!allStrength) { %>
+    <section
+      class="flex flex-col pdf-page justify-start"
+      style="background-image: url(<%= backgroundSmallTitle %>)"
+    >
+      <p class="page-title"><%= resultDescriptionTitle %></p>
+
+      <div class="page-3-content">
+        <p class="page-description"><%= resultDescription %></p>
+      </div>
+    </section>
+    <% } %>
+    <!-- ------  تفاصيل نقاط قوتك وضعفك ----------- -->
+    <section
+      class="flex flex-col pdf-page justify-start"
+      style="background-image: url(<%= backgroundSmallTitle %>)"
+    >
+      <p class="page-title"><%= pointsTitle %></p>
+
+      <div class="page-4-content flex flex-col page-6">
+        <div class="shadow-card">
+          <div class="flex flex-col header-result">
+            <div class="progress-container">
+              <svg
+                class=""
+                width="80"
+                height="59"
+                viewBox="0 0 80 59"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <!-- Background path -->
+                <path
+                  d="M7.83752 53.1784C5.67248 47.9693 4.82552 42.3067 5.37167 36.6921C5.91782 31.0775 7.84022 25.6842 10.9686 20.9901C14.097 16.2959 18.3347 12.4457 23.3065 9.78047C28.2783 7.11527 33.8307 5.71736 39.4718 5.71055C45.1129 5.70374 50.6686 7.08826 55.6468 9.74145C60.625 12.3946 64.872 16.2346 68.0117 20.9212C71.1514 25.6079 73.0868 30.9965 73.6465 36.6097C74.2062 42.223 73.3729 47.8877 71.2205 53.102"
+                  stroke="#E8E8E8"
+                  stroke-width="10.4211"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <!-- Dynamic progress path -->
+                <path
+                  d="M8.73875 53.1121C7.01857 48.9488 6.13526 44.4874 6.13925 39.9828C6.14324 35.4781 7.03446 31.0183 8.76202 26.858C10.4896 22.6978 13.0196 18.9185 16.2078 15.736C19.3959 12.5536 23.1796 10.0302 27.3429 8.31004C31.5062 6.58986 35.9676 5.70655 40.4723 5.71054C44.977 5.71453 49.4367 6.60575 53.597 8.33331C57.7573 10.0609 61.5365 12.5909 64.719 15.779C67.9015 18.9672 70.4248 22.7509 72.145 26.9142"
+                  stroke="#3bae49"
+                  stroke-width="10.4211"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-dasharray="120%"
+                  stroke-dashoffset="0"
+                />
+              </svg>
+
+              <p class="result-text">80<span>%</span></p>
+            </div>
+            <p class="font-bold" style="color: #3bae49">مرتفع</p>
+          </div>
+
+          <div class="flex flex-col items-start">
+            <p class="heder-desc-title">المستوى العام لثقتك بنفسك</p>
+
+            <div class="flex header-points">
+              <div class="flex header-point header-point-1">
+                <p><span>6</span> نقاط قوة</p>
+                <img src="<%= fullPoints %>" />
+              </div>
+              <div class="flex header-point header-point-2">
+                <p><span>6</span> نقاط تحتاج تطوير</p>
+                <img src="<%= mediumPoints %>" />
+              </div>
+              <div class="flex header-point header-point-3">
+                <p><span>6</span> نقاط ضعف</p>
+                <img src="<%= smallPoints %>" />
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flex page-2-card">
-          <img src="<%= rightCheck %>" alt="right check" />
-          <p class="page-description">
-            الإصدار التجريبي السابق من هذا البرنامج تم تطبيقها على مجموعة من
-            الأفراد، الذين طُلب منهم تقييم البرنامج بدقة، وتحديد مستوى الرضا عن
-            نتائجه بكل موضوعية، وقد أبدوا إعجابهم بمستوى الدقة والتفصيل الذي
-            يوفره البرنامج، ومدى قدرته على تحسين الثقة بالنفس ومعالجة نقاط الضعف
-            المرتبطة بها بشكل متكامل وفعّال.
-          </p>
+
+        <div class="capacity-result">
+          <div class="progress-container">
+            <svg
+              class=""
+              width="42"
+              height="42"
+              viewBox="0 0 80 59"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <!-- Background path -->
+              <path
+                d="M7.83752 53.1784C5.67248 47.9693 4.82552 42.3067 5.37167 36.6921C5.91782 31.0775 7.84022 25.6842 10.9686 20.9901C14.097 16.2959 18.3347 12.4457 23.3065 9.78047C28.2783 7.11527 33.8307 5.71736 39.4718 5.71055C45.1129 5.70374 50.6686 7.08826 55.6468 9.74145C60.625 12.3946 64.872 16.2346 68.0117 20.9212C71.1514 25.6079 73.0868 30.9965 73.6465 36.6097C74.2062 42.223 73.3729 47.8877 71.2205 53.102"
+                stroke="#E8E8E8"
+                stroke-width="10.4211"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <!-- Dynamic progress path -->
+              <path
+                d="M8.73875 53.1121C7.01857 48.9488 6.13526 44.4874 6.13925 39.9828C6.14324 35.4781 7.03446 31.0183 8.76202 26.858C10.4896 22.6978 13.0196 18.9185 16.2078 15.736C19.3959 12.5536 23.1796 10.0302 27.3429 8.31004C31.5062 6.58986 35.9676 5.70655 40.4723 5.71054C44.977 5.71453 49.4367 6.60575 53.597 8.33331C57.7573 10.0609 61.5365 12.5909 64.719 15.779C67.9015 18.9672 70.4248 22.7509 72.145 26.9142"
+                stroke="#3bae49"
+                stroke-width="10.4211"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-dasharray="120%"
+                stroke-dashoffset="0"
+              />
+            </svg>
+
+            <p class="result-text">80<span>%</span></p>
+          </div>
+
+          <div class="flex flex-col capacity-called">
+            <p class="text-10-bold">الاعتقاد في القدرات الشخصية</p>
+            <div class="flex header-point header-point-1">
+              <p>نقاط قوة</p>
+              <img src="<%= fullPoints %>" />
+            </div>
+          </div>
+          <div class="capacity-desc">
+            <p>
+              أن يكون لدى الشخص فكرة إيجابية عن القدرات التي يمتلكها، وأن يكون
+              لديه توقعٌ كبير لحسن توظيفه لها في المواقف المختلفة.
+            </p>
+          </div>
         </div>
       </div>
+    </section>
+    <!-- ------  تابع لتفاصيل نقاط قوتك وضعفك ----------- -->
+    <section
+      class="flex flex-col pdf-page justify-start"
+      style="background-image: url(<%= backgroundBigTitle %>)"
+    >
+      <p class="page-title"><%= pointsRestTitle %></p>
+    </section>
 
-      <div class="flex page-footer">
-        <div class="page-footer-number flex">
-          <p>2</p>
+    <!-- ------ مستواك مقارنةً بنتائج المختبرين الآخرين ----------- -->
+    <section
+      class="flex flex-col pdf-page justify-start"
+      style="background-image: url(<%= backgroundBigTitle %>)"
+    >
+      <p class="page-title"><%= comparisonTitle %></p>
+
+      <div class="page-6-content flex flex-col">
+        <div class="shadow-card flex-col">
+          <div class="flex justify-start page-6-header">
+            <p class="text-14-bold">
+              مستواك أعلى من المتوسط العام لمختبري الثقة بالنفس بـنسبة
+            </p>
+            <div
+              class="percentage-result"
+              style="border-color: #f0f9f1; color: #3bae49"
+            >
+              <small class="">%</small>
+              <p>17</p>
+              <img src="<%= arrowGreenUp %>" alt="arrow" />
+            </div>
+          </div>
+          <div class="flex justifiy-between">
+            <p class="page-6-desc">
+              هنا تجد مقارنة توضح مستواك مقارنةً بمتوسط نتائج المختبرين الذين
+              أجروا نفس المقياس في تطبيق ذاتك
+            </p>
+            <div class="card flex-col level">
+              <div class="flex level-box">
+                <div class="level-color"></div>
+                <p>مستواك</p>
+              </div>
+              <div class="flex level-box level-2">
+                <div class="level-color"></div>
+                <p>المستوى العام</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="page-footer-text">تقرير نتيجة مقياس الثقة بالنفس.</p>
+
+        <div class="card capacity-level">
+          <p class="text-10-bold">الاعتقاد في القدرات الشخصية</p>
+          <div
+            class="percentage-result"
+            style="border-color: #f0f9f1; color: #3bae49"
+          >
+            <small class="">%</small>
+            <p>17</p>
+            <img src="<%= arrowGreenUp %>" alt="arrow" />
+          </div>
+
+          <div class="flex flex-col gap-5">
+            <div class="progress-bar-container">
+              <div class="progress-bar" style="width: 82%">
+                <p>82%</p>
+              </div>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar progress-bar-2" style="width: 65%">
+                <p>65%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ------  وصف نتيجتك ----------- -->
+    <% if (allStrength) { %>
+    <section
+      class="flex flex-col pdf-page justify-start"
+      style="background-image: url(<%= backgroundSmallTitle %>)"
+    >
+      <p class="page-title"><%= resultDescriptionTitle %></p>
+
+      <div class="page-3-content">
+        <!--todo -- mostafa remove this -->
+        <p class="page-description"><%= resultDescription %></p>
+
+        <!--todo -- mostafa add variable  array in this -->
+        <!-- <div class="flex flex-col page-2-content">
+          <% cards.forEach(function(card) { %>
+          <div class="flex page-2-card">
+            <img src="<%= rightCheck %>" alt="right check" />
+            <p class="page-description"><%= card %></p>
+          </div>
+          <% }); %>
+        </div> -->
+      </div>
+    </section>
+    <% } %>
+    <!-- ------  التوصيات التطويرية ----------- -->
+    <% if (!allStrength) { %>
+    <section
+      class="flex flex-col pdf-page"
+      style="background-image: url(<%= backgroundSmallTitle %>)"
+    >
+      <p class="page-title"><%= developmentRecommendationsTitle %></p>
+
+      <div class="flex flex-col page-7-content">
+        <% recommendationsTitles.forEach(function(title, index) { %>
+        <div class="flex items-start page-7-card">
+          <div class="page-7-card-num">
+            <img src="<%= treePapers %>" alt="tree" />
+            <p><%= (index + 1).toString().padStart(2, '0') %></p>
+          </div>
+          <div>
+            <p class="page-7-card-title"><%= title %></p>
+            <p class="page-description">
+              <%= recommendationsDescriptions[index] %>
+            </p>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </section>
+    <% } %>
+    <!-- ------  الملاحظات ----------- -->
+    <section
+      class="flex flex-col pdf-page"
+      style="background-image: url(<%= backgroundSmallTitle %>)"
+    >
+      <p class="page-title"><%= notesTitle %></p>
+
+      <div class="flex flex-col page-8-content items-start">
+        <% if (allStrength) { %>
+        <!-- Show only the 1st and 4th notes -->
+        <div class="flex page-8-card">
+          <img src="<%= noteImages[0] %>" alt="note 1" />
+          <p class="page-description"><%= notesDescription[0] %></p>
+        </div>
+        <div class="flex page-8-card">
+          <img src="<%= noteImages[3] %>" alt="note 4" />
+          <p class="page-description"><%= notesDescription[3] %></p>
+        </div>
+        <% } else { %>
+        <!-- Show all 4 notes -->
+        <% notesDescription.forEach(function(note, index) { %>
+        <div class="flex page-8-card">
+          <img src="<%= noteImages[index] %>" alt="note <%= index + 1 %>" />
+          <p class="page-description"><%= note %></p>
+        </div>
+        <% }); %> <% } %>
       </div>
     </section>
   </body>

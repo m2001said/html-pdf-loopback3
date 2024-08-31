@@ -7,10 +7,16 @@
     "validateUpsert": true
   },
   "properties": {
-    "username": {
+    "programId": {
+      "type": "number"
+    },
+    "allStrength": {
+      "type": "boolean"
+    },
+    "date": {
       "type": "string"
     },
-    "issueDate": {
+    "username": {
       "type": "string"
     },
     "heroLogo": {
@@ -21,6 +27,95 @@
     },
     "backgroundSmallTitle": {
       "type": "string"
+    },
+    "backgroundBigTitle": {
+      "type": "string"
+    },
+    "arrowGreenUp": {
+      "type": "string"
+    },
+    "arrowGreyDown": {
+      "type": "string"
+    },
+    "arrowOrangeUp": {
+      "type": "string"
+    },
+    "fullPoints": {
+      "type": "string"
+    },
+    "mediumPoints": {
+      "type": "string"
+    },
+    "smallPoints": {
+      "type": "string"
+    },
+    "note1": {
+      "type": "string"
+    },
+    "note2": {
+      "type": "string"
+    },
+    "note3": {
+      "type": "string"
+    },
+    "note4": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "aboutTitle": {
+      "type": "string"
+    },
+    "resultDescriptionTitle": {
+      "type": "string"
+    },
+    "pointsTitle": {
+      "type": "string"
+    },
+    "pointsRestTitle": {
+      "type": "string"
+    },
+    "comparisonTitle": {
+      "type": "string"
+    },
+    "developmentRecommendationsTitle": {
+      "type": "string"
+    },
+    "notesTitle": {
+      "type": "string"
+    },
+    "resultDescription": {
+      "type": "string"
+    },
+    "usernameTitle": {
+      "type": "string"
+    },
+    "dateTitle": {
+      "type": "string"
+    },
+    "cards": {
+      "type": "array",
+      "itemType": "string"
+    },
+    "recommendationsTitles": {
+      "type": "array",
+      "itemType": "string"
+    },
+    "recommendationsDescriptions": {
+      "type": "array",
+      "itemType": "string"
+    },
+    "noteImages": {
+      "type": "array",
+      "itemType": "string"
+    },
+    "notesDescription": {
+      "type": "array",
+      "itemType": "string"
     }
   },
   "validations": [],

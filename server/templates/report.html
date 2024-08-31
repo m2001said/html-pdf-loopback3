@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&family=Smooch+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* --------------general styles ----------------- */
+      :root {
+        --green: #3bae49;
+        --green-light: #f0f9f1;
+        --green-2: #006400;
+        --green-2-light: #90ee90;
+        --orange: #f6871f;
+        --orange-light: #fff6ed;
+        --white: #fff;
+        --black: #000;
+        --grey: #828282;
+        --grey-light: #f2f2f2;
+        --grey-very-light: #f9f9f9;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        font-family: "Tajawal", sans-serif;
+      }
+      .flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .flex-col {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      /* @page {
+        size: portrait;
+        margin: 15%;
+      } */
+      .pdf-page {
+        page-break-after: always;
+        /* break-after: page; */
+        width: 595px;
+        height: 842px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: relative;
+      }
+      .pdf-page:last-child {
+        page-break-after: auto;
+      }
+      .page-title {
+        position: absolute;
+        font-size: 14px;
+        font-weight: bold;
+        top: 48px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .page-description {
+        font-size: 16px;
+        line-height: 28px;
+        font-weight: 500;
+      }
+
+      .text-10-bold {
+        font-size: 10px;
+        font-weight: bold;
+      }
+      .text-14-bold {
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .justify-start {
+        justify-content: flex-start;
+      }
+      .justifiy-between {
+        justify-content: space-between;
+      }
+      .items-start {
+        align-items: flex-start;
+      }
+      .gap-5 {
+        gap: 5px;
+      }
+      .page-footer {
+        position: absolute;
+        bottom: 29px;
+        right: 63px;
+        gap: 7px;
+      }
+      .page-footer-number {
+        width: 16px;
+        height: 16px;
+        border: solid 0.1px var(--grey);
+        border-radius: 50%;
+      }
+      .page-footer-number p {
+        font-size: 10px;
+      }
+      .page-footer-text {
+        font-size: 5.5px;
+        color: var(--grey);
+      }
+
+      /* --------------  progress-circle-bar ----------------- */
+      .progress-container {
+        position: relative;
+      }
+
+      .result-text {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .result-text span {
+        font-size: 10px;
+        font-weight: 500;
+      }
+      /* --------------  page-1 ----------------- */
+      .page-1 {
+        background: var(--green);
+        color: var(--white);
+        justify-content: space-around;
+        font-weight: bold;
+      }
+      .page-1-logo {
+        width: 187px;
+        height: 100%;
+      }
+      .page-1-title {
+        font-size: 32px;
+      }
+      .page-1-subtitle {
+        font-size: 24px;
+      }
+      .page-1-user {
+        font-size: 20px;
+      }
+      .page-1-date {
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      /* --------------  page-2 ----------------- */
+      .page-2-content,
+      .page-7-content,
+      .page-8-content {
+        padding: 0 48px;
+      }
+
+      .page-2-card {
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .page-2-card p {
+        margin-top: -5px;
+      }
+      .page-2-card img {
+        width: 21px;
+        height: 21px;
+      }
+      /* --------------  page-3 ----------------- */
+
+      .page-3-content {
+        justify-content: flex-start;
+        margin: 150px 48px 0 48px;
+      }
+      /* --------------  page-4 ----------------- */
+      .page-4-content,
+      .page-6-content {
+        padding: 125px 24px 0 24px;
+        gap: 20px;
+      }
+      .shadow-card,
+      .card {
+        display: flex;
+        border: solid 1px var(--grey-light);
+        box-shadow: 0px 4px 8px var(--grey-light);
+        justify-content: space-between;
+        padding: 10px;
+        border-radius: 12px;
+        gap: 20px;
+      }
+      .card {
+        box-shadow: none;
+      }
+      .header-result {
+        background: var(--green-light);
+        padding: 15px 20px;
+        border-radius: 12px;
+        gap: 5px;
+      }
+      .heder-desc-title {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .header-points {
+        gap: 4px;
+        font-size: 12px;
+      }
+      .header-point {
+        padding: 7px 15px;
+        gap: 11px;
+        border-radius: 20px;
+      }
+      .header-point span {
+        font-weight: bold;
+      }
+      .header-point-1 {
+        background: var(--green-light);
+        color: var(--green);
+      }
+      .header-point-2 {
+        background: var(--orange-light);
+        color: var(--orange);
+      }
+      .header-point-3 {
+        background: var(--grey-light);
+        color: var(--grey);
+      }
+      .capacity-result {
+        display: flex;
+        border: solid 1px var(--grey-light);
+        border-radius: 12px;
+        background: var(--white);
+        padding: 15px;
+        gap: 20px;
+        justify-content: space-between;
+      }
+      .capacity-result .result-text {
+        font-size: 12.5px;
+        bottom: 28px;
+      }
+      .capacity-result .result-text span {
+        font-size: 6.4px;
+      }
+      .capacity-called {
+        align-items: flex-start;
+      }
+      .capacity-called .header-point {
+        font-size: 7.5px;
+        font-weight: bold;
+        padding: 4px 10px;
+        gap: 4px;
+      }
+      .capacity-called img {
+        width: 7px;
+      }
+
+      .capacity-desc {
+        width: 300px;
+        background: var(--grey-very-light);
+        border-radius: 12px;
+      }
+      .capacity-desc p {
+        padding: 20px 12px;
+        font-size: 8px;
+        font-weight: 500;
+      }
+
+      /* --------------  page-6 ----------------- */
+      /* --------------  percentage-result ----------------- */
+      .page-6-content .shadow-card {
+        padding: 20px 20px 20px 10px;
+        max-width: 550px;
+        width: 100%;
+      }
+      .percentage-result {
+        border: 1px solid red;
+        display: flex;
+        gap: 2px;
+        border-radius: 20px;
+        padding: 2px 7px;
+      }
+      .shadow-card .percentage-result p {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .page-6-header {
+        gap: 5px;
+      }
+      .level {
+        width: 110px;
+        gap: 6px;
+      }
+      .level-box {
+        justify-content: flex-start;
+        gap: 4px;
+      }
+      .level-box p {
+        font-size: 8px;
+      }
+      .level-color {
+        width: 32px;
+        height: 12px;
+        border-radius: 5px;
+        background: var(--green-2-light);
+      }
+      .level-2 .level-color {
+        background: var(--green-2);
+      }
+      .page-6-desc {
+        font-size: 12px;
+        width: 332px;
+        line-height: 20px;
+        font-weight: 500;
+      }
+      .capacity-level {
+        justify-content: space-between;
+        align-items: center;
+        width: 101%;
+      }
+
+      /* -------- */
+      .progress-bar-container {
+        background-color: var(--grey-light);
+        border-radius: 20px;
+        width: 304px;
+        height: 12px;
+        overflow: hidden;
+        font-size: 8px;
+        font-weight: bold;
+      }
+
+      .progress-bar {
+        background-color: var(--green-2);
+        height: 100%;
+        border-radius: 15px;
+        font-weight: bold;
+        color: var(--white);
+        position: relative;
+      }
+      .progress-bar p {
+        position: absolute;
+        left: 10px;
+      }
+
+      .progress-bar-2 {
+        color: var(--green-2);
+        background-color: var(--green-2-light);
+      }
+
+      /* ----------------7--------------- */
+      .page-7-content {
+        gap: 40px;
+      }
+      .page-7-card {
+        gap: 15px;
+      }
+      .page-7-card-title {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .page-7-card-num {
+        font-size: 33.7px;
+        font-weight: bold;
+        position: relative;
+      }
+      .page-7-card-num p {
+        color: var(--green);
+        position: absolute;
+        bottom: 10px;
+        right: 5px;
+        font-family: "Smooch Sans";
+      }
+      /* ---------------8 ------------- */
+      .page-8-content {
+        gap: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ------ page 1 ----------- -->
+    <section class="flex flex-col pdf-page page-1">
+      <div class="flex flex-col">
+        <img class="page-1-logo" src="{{heroLogo}}" alt="logo" />
+        <p class="page-1-title">تقرير نتيجة مقياس الثقة بالنفس</p>
+        <p class="page-1-subtitle">برنامج ذاتك لتعزيز الثقة بالنفس</p>
+      </div>
+
+      <div class="flex flex-col">
+        <p class="page-1-user">صاحب التقرير:{{username}}</p>
+        <p class="page-1-date">تاريخ الإصدار: {{date}}</p>
+      </div>
+    </section>
+
+    <!-- ------ page 2 ----------- -->
+    <section
+      class="flex flex-col pdf-page"
+      style="background-image: url({{backgroundSmallTitle}})"
+    >
+      <p class="page-title">حول البرنامج</p>
+
+      <div class="flex flex-col page-2-content">
+        <div class="flex page-2-card">
+          <img src="{{rightCheck}}" alt="right check" />
+          <p class="page-description">
+            هذا البرنامج تم تطويره بعناية واحترافية عالية، مستندًا إلى أحدث
+            الأبحاث العلمية والتقنيات المبتكرة في مجال قياس وتطوير الثقة بالنفس،
+            كما بُذلت جهود كبيرة لضمان توافقه مع أفضل المعايير العالمية في مجال
+            القياس والتقويم، وقد تم تصميمه ليكون أداة دقيقة وشاملة تلبي
+            الاحتياجات التطويرية للأفراد في مجال الثقة بالنفس.
+          </p>
+        </div>
+        <div class="flex page-2-card">
+          <img src="{{rightCheck}}" alt="right check" />
+          <p class="page-description">
+            تضمن هذا البرنامج مقياسًا لمعايير الثقة بالنفس، وقد تم تحكيم هذا
+            المقياس بموضوعية، ورُوجِع بدقة من قِبل علماء وخبراء متميزين في
+            مجالات متعددة، تشمل الصحة النفسية، والإرشاد النفسي، وعلم نفس
+            الشخصية، إضافة إلى القياس والتقويم، وقد أكدوا على تميز المقياس
+            وفعاليته، وأنه قادر على تقديم تقييم دقيق لمعايير الثقة بالنفس؛ مما
+            يجعله منافسا قويًا في السوق العالمي.
+          </p>
+        </div>
+        <div class="flex page-2-card">
+          <img src="{{rightCheck}}" alt="right check" />
+          <p class="page-description">
+            الإصدار التجريبي السابق من هذا البرنامج تم تطبيقها على مجموعة من
+            الأفراد، الذين طُلب منهم تقييم البرنامج بدقة، وتحديد مستوى الرضا عن
+            نتائجه بكل موضوعية، وقد أبدوا إعجابهم بمستوى الدقة والتفصيل الذي
+            يوفره البرنامج، ومدى قدرته على تحسين الثقة بالنفس ومعالجة نقاط الضعف
+            المرتبطة بها بشكل متكامل وفعّال.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex page-footer">
+        <div class="page-footer-number flex">
+          <p>2</p>
+        </div>
+        <p class="page-footer-text">تقرير نتيجة مقياس الثقة بالنفس.</p>
+      </div>
+    </section>
+  </body>
+</html>
