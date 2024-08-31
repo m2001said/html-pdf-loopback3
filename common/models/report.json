@@ -122,6 +122,24 @@
     },
     "levelSentens": {
       "type": "string"
+    },
+    "fullPoint": {
+      "type": "string"
+    },
+    "mediumPoint": {
+      "type": "string"
+    },
+    "smallPoint": {
+      "type": "string"
+    },
+    "levelDesc": {
+      "type": "string"
+    },
+    "yourLevel": {
+      "type": "string"
+    },
+    "theLevel": {
+      "type": "string"
     }
   },
   "validations": [],
