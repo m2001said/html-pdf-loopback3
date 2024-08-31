@@ -418,7 +418,7 @@
     </style>
   </head>
   <body>
-    <!-- ------ page 1 ----------- -->
+    <!-- ------  الصفحة الرئيسية ----------- -->
     <section class="flex flex-col pdf-page page-1">
       <div class="flex flex-col">
         <img class="page-1-logo" src="<%= heroLogo %>" alt="logo" />
@@ -432,7 +432,7 @@
       </div>
     </section>
 
-    <!-- ------ page 2 ----------- -->
+    <!-- ------  حول البرنامج----------- -->
     <section
       class="flex flex-col pdf-page"
       style="background-image: url(<%= backgroundSmallTitle %>)"
@@ -449,7 +449,8 @@
       </div>
     </section>
 
-    <!-- ------ page 3 ----------- -->
+    <!-- ------  وصف نتيجتك ----------- -->
+    <% if (!allStrength) { %>
     <section
       class="flex flex-col pdf-page justify-start"
       style="background-image: url(<%= backgroundSmallTitle %>)"
@@ -460,8 +461,8 @@
         <p class="page-description"><%= resultDescription %></p>
       </div>
     </section>
-
-    <!-- ------ page 4 ----------- -->
+    <% } %>
+    <!-- ------  تفاصيل نقاط قوتك وضعفك ----------- -->
     <section
       class="flex flex-col pdf-page justify-start"
       style="background-image: url(<%= backgroundSmallTitle %>)"
@@ -574,14 +575,15 @@
         </div>
       </div>
     </section>
-    <!-- ------ page 5 ----------- -->
+    <!-- ------  تابع لتفاصيل نقاط قوتك وضعفك ----------- -->
     <section
       class="flex flex-col pdf-page justify-start"
       style="background-image: url(<%= backgroundBigTitle %>)"
     >
       <p class="page-title"><%= pointsRestTitle %></p>
     </section>
-    <!-- ------ page 6 ----------- -->
+
+    <!-- ------ مستواك مقارنةً بنتائج المختبرين الآخرين ----------- -->
     <section
       class="flex flex-col pdf-page justify-start"
       style="background-image: url(<%= backgroundBigTitle %>)"
@@ -647,7 +649,32 @@
         </div>
       </div>
     </section>
-    <!-- ------ page 7 ----------- -->
+    <!-- ------  وصف نتيجتك ----------- -->
+    <% if (allStrength) { %>
+    <section
+      class="flex flex-col pdf-page justify-start"
+      style="background-image: url(<%= backgroundSmallTitle %>)"
+    >
+      <p class="page-title"><%= resultDescriptionTitle %></p>
+
+      <div class="page-3-content">
+        <!--todo -- mostafa remove this -->
+        <p class="page-description"><%= resultDescription %></p>
+
+        <!--todo -- mostafa add variable  array in this -->
+        <!-- <div class="flex flex-col page-2-content">
+          <% cards.forEach(function(card) { %>
+          <div class="flex page-2-card">
+            <img src="<%= rightCheck %>" alt="right check" />
+            <p class="page-description"><%= card %></p>
+          </div>
+          <% }); %>
+        </div> -->
+      </div>
+    </section>
+    <% } %>
+    <!-- ------  التوصيات التطويرية ----------- -->
+    <% if (!allStrength) { %>
     <section
       class="flex flex-col pdf-page"
       style="background-image: url(<%= backgroundSmallTitle %>)"
@@ -655,52 +682,24 @@
       <p class="page-title"><%= developmentRecommendationsTitle %></p>
 
       <div class="flex flex-col page-7-content">
+        <% recommendationsTitles.forEach(function(title, index) { %>
         <div class="flex items-start page-7-card">
           <div class="page-7-card-num">
             <img src="<%= treePapers %>" alt="tree" />
-            <p>01</p>
+            <p><%= (index + 1).toString().padStart(2, '0') %></p>
           </div>
           <div>
-            <p class="page-7-card-title">احتياجاتك التطويرية:</p>
+            <p class="page-7-card-title"><%= title %></p>
             <p class="page-description">
-              بناءً على نتائج المقياس والخطة التطويرية الفردية الخاصة بك، تبين
-              أنك بحاجة إلى تنفيذ عشرات المهام التطويرية لتعزيز ثقتك بنفسك
-              والوصول إلى مستوى متميز.
+              <%= recommendationsDescriptions[index] %>
             </p>
           </div>
         </div>
-        <div class="flex items-start page-7-card">
-          <div class="page-7-card-num">
-            <img src="<%= treePapers %>" alt="tree" />
-            <p>02</p>
-          </div>
-          <div>
-            <p class="page-7-card-title">خطتك التطويرية الفردية (IDP):</p>
-            <p class="page-description">
-              تم إعداد الخطة التطويرية الفردية الخاصة بك (IDP)، والتي تتضمن
-              تطوير عدة جدارات مهمة، ويمكنك مراجعة تطبيق "ذاتك" للاطلاع على
-              تفاصيل خطتك.
-            </p>
-          </div>
-        </div>
-        <div class="flex items-start page-7-card">
-          <div class="page-7-card-num">
-            <img src="<%= treePapers %>" alt="tree" />
-            <p>03</p>
-          </div>
-          <div>
-            <p class="page-7-card-title">رحلتك التطويرية :</p>
-            <p class="page-description">
-              تم تجهيز جميع المهام التطويرية لك على هيئة رحلة تطويرية مخصصة، تم
-              تصميمها بناءً على منهجية علمية، وقد تم تقديم هذه المهام بأسلوب
-              تلعيبي يجمع بين الفائدة والمتعة؛ مما يساهم في تجربة تعليمية شيقة
-              وفعّالة.
-            </p>
-          </div>
-        </div>
+        <% }); %>
       </div>
     </section>
-    <!-- ------ page 8 ----------- -->
+    <% } %>
+    <!-- ------  الملاحظات ----------- -->
     <section
       class="flex flex-col pdf-page"
       style="background-image: url(<%= backgroundSmallTitle %>)"
@@ -708,33 +707,24 @@
       <p class="page-title"><%= notesTitle %></p>
 
       <div class="flex flex-col page-8-content items-start">
+        <% if (allStrength) { %>
+        <!-- Show only the 1st and 4th notes -->
         <div class="flex page-8-card">
-          <img src="<%= note1 %>" alt="tree" />
-          <p class="page-description">
-            تعتمد دقة نتيجتك في هذا المقياس على مدى دقة إجاباتك؛ فإذا لم تكن
-            إجاباتك دقيقة، فإننا ننصحك بإعادة إجراء المقياس مرة أخرى.
-          </p>
+          <img src="<%= noteImages[0] %>" alt="note 1" />
+          <p class="page-description"><%= notesDescription[0] %></p>
         </div>
         <div class="flex page-8-card">
-          <img src="<%= note2 %>" alt="tree" />
-          <p class="page-description">
-            تقدمك في تنفيذ خطتك التطويرية الفردية (IDP) سيساهم في تعزيز ثقتك
-            بنفسك ويؤهلك لتحقيق أهدافك الحياتية بكفاءة.
-          </p>
+          <img src="<%= noteImages[3] %>" alt="note 4" />
+          <p class="page-description"><%= notesDescription[3] %></p>
         </div>
+        <% } else { %>
+        <!-- Show all 4 notes -->
+        <% notesDescription.forEach(function(note, index) { %>
         <div class="flex page-8-card">
-          <img src="<%= note3 %>" alt="tree" />
-          <p class="page-description">
-            يُرجى متابعة تطبيق "ذاتك" بانتظام؛ لضمان الالتزام بتنفيذ المهام
-            وتحقيق الأهداف التطويرية المحددة.
-          </p>
+          <img src="<%= noteImages[index] %>" alt="note <%= index + 1 %>" />
+          <p class="page-description"><%= note %></p>
         </div>
-        <div class="flex page-8-card">
-          <img src="<%= note4 %>" alt="tree" />
-          <p class="page-description">
-            هذا التقرير سري وشخصي ولا يجوز تداوله دون إذنٍ من صاحبه.
-          </p>
-        </div>
+        <% }); %> <% } %>
       </div>
     </section>
   </body>

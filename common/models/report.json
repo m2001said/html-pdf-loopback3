@@ -7,6 +7,12 @@
     "validateUpsert": true
   },
   "properties": {
+    "programId": {
+      "type": "number"
+    },
+    "allStrength": {
+      "type": "boolean"
+    },
     "date": {
       "type": "string"
     },
@@ -92,6 +98,22 @@
       "type": "string"
     },
     "cards": {
+      "type": "array",
+      "itemType": "string"
+    },
+    "recommendationsTitles": {
+      "type": "array",
+      "itemType": "string"
+    },
+    "recommendationsDescriptions": {
+      "type": "array",
+      "itemType": "string"
+    },
+    "noteImages": {
+      "type": "array",
+      "itemType": "string"
+    },
+    "notesDescription": {
       "type": "array",
       "itemType": "string"
     }

@@ -14,15 +14,18 @@ module.exports = function (report) {
 
   report.generate = async (res) => {
     try {
-      const locale = ar; // You can switch to `en` for English content
-      let program;
-      let programId = 3;
+      const language = ar; // todo --- mostafa
 
+      let program;
+      let programId = 2; // todo --- mostafa
       if (programId === 2) {
-        program = locale.REPORT.SELF_CONFIDENCE;
+        program = language.REPORT.SELF_CONFIDENCE;
       } else if (programId === 3) {
-        program = locale.REPORT.LEADERSHIP;
+        program = language.REPORT.LEADERSHIP;
       }
+
+      const gender = "male"; // todo --- mostafa
+      const allStrength = true; // todo --- mostafa
 
       const data = {
         // -----all images---------
@@ -42,37 +45,62 @@ module.exports = function (report) {
         note4: utils.IMGToURI("note4.png"),
         treePapers: utils.IMGToURI("tree-papers.png"),
 
+        // -----------main variables-------
+        programId: 2,
+        allStrength: allStrength,
+
         // ---page 1 ---
         title: program.TITLE,
         subtitle: program.SUBTITLE,
         date: moment().format("DD/MM/YYYY"),
+        usernameTitle: language.REPORT.REPORT_USER,
+        dateTitle: language.REPORT.REPORT_DATE,
+        // todo --- mostafa
         username: "محمد خالد",
-        usernameTitle: locale.REPORT.REPORT_USER,
-        dateTitle: locale.REPORT.REPORT_DATE,
 
         // ---page 2 ---
-        aboutTitle: locale.REPORT.TITLE_ABOUT,
+        aboutTitle: language.REPORT.TITLE_ABOUT,
         cards: program.CARDS,
 
         // ---page 3 ---
-        resultDescriptionTitle: locale.REPORT.TITLE_RESULT_DESCRIPTION,
+        resultDescriptionTitle: language.REPORT.TITLE_RESULT_DESCRIPTION,
+        // todo --- mostafa
         resultDescription: "هات الوصف يا مصطفي وحطه هنا",
 
         // ---page 4 ---
-        pointsTitle: locale.REPORT.TITLE_POINTS,
+        pointsTitle: allStrength
+          ? language.REPORT.TITLE_POINTS_STRONG
+          : language.REPORT.TITLE_POINTS,
 
         // ---page 5 ---
-        pointsRestTitle: locale.REPORT.TITLE_POINTS_REST,
+        pointsRestTitle: allStrength
+          ? language.REPORT.TITLE_POINTS_REST_STRONG
+          : language.REPORT.TITLE_POINTS_REST,
 
         // ---page 6 ---
-        comparisonTitle: locale.REPORT.TITLE_COMPARISON,
+        comparisonTitle: language.REPORT.TITLE_COMPARISON,
 
         // ---page 7 ---
         developmentRecommendationsTitle:
-          locale.REPORT.TITLE_DEVELOPMENT_RECOMMENDATIONS,
+          language.REPORT.TITLE_DEVELOPMENT_RECOMMENDATIONS,
+        recommendationsTitles: language.REPORT.RECOMMENDATIONS.TITLES,
+        recommendationsDescriptions:
+          gender === "male"
+            ? language.REPORT.RECOMMENDATIONS.MALE
+            : language.REPORT.RECOMMENDATIONS.FEMALE,
 
         // ---page 8 ---
-        notesTitle: locale.REPORT.TITLE_NOTES,
+        notesTitle: language.REPORT.TITLE_NOTES,
+        noteImages: [
+          utils.IMGToURI("note1.png"),
+          utils.IMGToURI("note2.png"),
+          utils.IMGToURI("note3.png"),
+          utils.IMGToURI("note4.png"),
+        ],
+        notesDescription:
+          gender === "male"
+            ? language.REPORT.NOTES.MALE
+            : language.REPORT.NOTES.FEMALE,
       };
 
       const html = await ejs.renderFile(
