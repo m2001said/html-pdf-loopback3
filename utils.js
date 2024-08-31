@@ -1,17 +1,23 @@
+// --important notes for puppeteer :https://apitemplate.io/blog/tips-for-generating-pdfs-with-puppeteer/
 const puppeteer = require("puppeteer");
 const path = require("path");
 
 const generatePdf = async (html) => {
-  const browser = await puppeteer.launch(); // Launch the browser
-  const page = await browser.newPage(); // Open a new page
-  await page.setContent(html, { waitUntil: "networkidle0" }); // Set the HTML content
+  const browser = await puppeteer.launch({
+    headless: true,
+  });
+
+  const page = await browser.newPage();
+  await page.setContent(html, { waitUntil: "networkidle0" });
+
   const pdfBuffer = await page.pdf({
-    format: "A4",
+    height: `842px`,
+    width: "595px",
     printBackground: true,
     landscape: false,
   }); // Generate PDF as a buffer
-  await browser.close(); // Close the browser
-  return pdfBuffer; // Return the buffer
+  await browser.close();
+  return pdfBuffer;
 };
 
 const IMGToURI = (imgName) => {
