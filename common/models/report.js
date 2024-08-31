@@ -88,6 +88,9 @@ module.exports = function (report) {
           ? language.REPORT.TITLE_POINTS_STRONG
           : language.REPORT.TITLE_POINTS,
         mainLevel: program.MAIN_LEVEL,
+        fullPoint: language.REPORT.FULL_POINT,
+        mediumPoint: language.REPORT.MEDUIM_POINT,
+        smallPoint: language.REPORT.SMALL_POINT,
 
         // ---page 5 ---
         pointsRestTitle: allStrength
@@ -96,6 +99,9 @@ module.exports = function (report) {
 
         // ---page 6 ---
         comparisonTitle: language.REPORT.TITLE_COMPARISON,
+        levelDesc: language.REPORT.LEVEL.LEVEL_DESC,
+        yourLevel: language.REPORT.LEVEL.YOUR_LEVEL,
+        theLevel: language.REPORT.LEVEL.THE_LEVEL,
 
         // ---page 7 ---
         developmentRecommendationsTitle:

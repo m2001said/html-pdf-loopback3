@@ -511,15 +511,15 @@
 
             <div class="flex header-points">
               <div class="flex header-point header-point-1">
-                <p><span>6</span> نقاط قوة</p>
+                <p><span>6</span> <%= fullPoint %></p>
                 <img src="<%= fullPoints %>" />
               </div>
               <div class="flex header-point header-point-2">
-                <p><span>6</span> نقاط تحتاج تطوير</p>
+                <p><span>6</span> <%= mediumPoint %></p>
                 <img src="<%= mediumPoints %>" />
               </div>
               <div class="flex header-point header-point-3">
-                <p><span>6</span> نقاط ضعف</p>
+                <p><span>6</span> <%= smallPoint %></p>
                 <img src="<%= smallPoints %>" />
               </div>
             </div>
@@ -604,18 +604,15 @@
             </div>
           </div>
           <div class="flex justifiy-between">
-            <p class="page-6-desc">
-              هنا تجد مقارنة توضح مستواك مقارنةً بمتوسط نتائج المختبرين الذين
-              أجروا نفس المقياس في تطبيق ذاتك
-            </p>
+            <p class="page-6-desc"><%= levelDesc %></p>
             <div class="card flex-col level">
               <div class="flex level-box">
                 <div class="level-color"></div>
-                <p>مستواك</p>
+                <p><%= yourLevel %></p>
               </div>
               <div class="flex level-box level-2">
                 <div class="level-color"></div>
-                <p>المستوى العام</p>
+                <p><%= theLevel %></p>
               </div>
             </div>
           </div>
