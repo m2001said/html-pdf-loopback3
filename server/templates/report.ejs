@@ -87,24 +87,41 @@
       .gap-5 {
         gap: 5px;
       }
-      .page-footer {
+      body {
+        counter-reset: sectionCounter;
+      }
+      /* -------------footer------------ */
+      section {
+        counter-increment: sectionCounter;
+        position: relative;
+        page-break-after: always;
+      }
+      section::after {
+        content: counter(sectionCounter);
         position: absolute;
         bottom: 29px;
         right: 63px;
-        gap: 7px;
-      }
-      .page-footer-number {
+        font-size: 10px;
         width: 16px;
         height: 16px;
         border: solid 0.1px var(--grey-light);
         border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
       }
-      .page-footer-number p {
-        font-size: 10px;
-      }
-      .page-footer-text {
+      section::before {
+        content: "<%= title %> ";
         font-size: 5.5px;
         color: var(--grey);
+        position: absolute;
+        bottom: 34px;
+        right: 85px;
+      }
+      section:first-child::before,
+      section:first-child::after {
+        content: none;
       }
 
       /* --------------  progress-circle-bar ----------------- */
@@ -410,8 +427,8 @@
       </div>
 
       <div class="flex flex-col">
-        <p class="page-1-user">صاحب التقرير: <%= username %></p>
-        <p class="page-1-date">تاريخ الإصدار: <%= date %></p>
+        <p class="page-1-user"><%= usernameTitle %> : <%= username %></p>
+        <p class="page-1-date"><%= dateTitle %> : <%= date %></p>
       </div>
     </section>
 
@@ -430,13 +447,6 @@
         </div>
         <% }); %>
       </div>
-
-      <div class="flex page-footer">
-        <div class="page-footer-number flex">
-          <p>2</p>
-        </div>
-        <p class="page-footer-text"><%= title %>.</p>
-      </div>
     </section>
 
     <!-- ------ page 3 ----------- -->
@@ -448,12 +458,6 @@
 
       <div class="page-3-content">
         <p class="page-description"><%= resultDescription %></p>
-      </div>
-      <div class="flex page-footer">
-        <div class="page-footer-number flex">
-          <p>3</p>
-        </div>
-        <p class="page-footer-text"><%= title %>.</p>
       </div>
     </section>
 
@@ -569,13 +573,6 @@
           </div>
         </div>
       </div>
-
-      <div class="flex page-footer">
-        <div class="page-footer-number flex">
-          <p>4</p>
-        </div>
-        <p class="page-footer-text"><%= title %>.</p>
-      </div>
     </section>
     <!-- ------ page 5 ----------- -->
     <section
@@ -583,13 +580,6 @@
       style="background-image: url(<%= backgroundBigTitle %>)"
     >
       <p class="page-title"><%= pointsRestTitle %></p>
-
-      <div class="flex page-footer">
-        <div class="page-footer-number flex">
-          <p>5</p>
-        </div>
-        <p class="page-footer-text"><%= title %>.</p>
-      </div>
     </section>
     <!-- ------ page 6 ----------- -->
     <section
@@ -656,13 +646,6 @@
           </div>
         </div>
       </div>
-
-      <div class="flex page-footer">
-        <div class="page-footer-number flex">
-          <p>6</p>
-        </div>
-        <p class="page-footer-text"><%= title %>.</p>
-      </div>
     </section>
     <!-- ------ page 7 ----------- -->
     <section
@@ -716,13 +699,6 @@
           </div>
         </div>
       </div>
-
-      <div class="flex page-footer">
-        <div class="page-footer-number flex">
-          <p>7</p>
-        </div>
-        <p class="page-footer-text"><%= title %>.</p>
-      </div>
     </section>
     <!-- ------ page 8 ----------- -->
     <section
@@ -759,13 +735,6 @@
             هذا التقرير سري وشخصي ولا يجوز تداوله دون إذنٍ من صاحبه.
           </p>
         </div>
-      </div>
-
-      <div class="flex page-footer">
-        <div class="page-footer-number flex">
-          <p>8</p>
-        </div>
-        <p class="page-footer-text"><%= title %>.</p>
       </div>
     </section>
   </body>

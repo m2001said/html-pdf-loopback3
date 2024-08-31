@@ -47,6 +47,8 @@ module.exports = function (report) {
         subtitle: program.SUBTITLE,
         date: moment().format("DD/MM/YYYY"),
         username: "محمد خالد",
+        usernameTitle: locale.REPORT.REPORT_USER,
+        dateTitle: locale.REPORT.REPORT_DATE,
 
         // ---page 2 ---
         aboutTitle: locale.REPORT.TITLE_ABOUT,

@@ -85,6 +85,12 @@
     "resultDescription": {
       "type": "string"
     },
+    "usernameTitle": {
+      "type": "string"
+    },
+    "dateTitle": {
+      "type": "string"
+    },
     "cards": {
       "type": "array",
       "itemType": "string"
