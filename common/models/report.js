@@ -14,21 +14,21 @@ module.exports = function (report) {
 
   report.generate = async (res) => {
     try {
-      const language = ar; // todo --- mostafa
+      const language = ar;
 
+      const lang = "ar";
+      const gender = "male";
+      const allStrength = false;
       let program;
-      let programId = 3; // todo --- mostafa
+      let programId = 3;
       if (programId === 2) {
         program = language.REPORT.SELF_CONFIDENCE;
       } else if (programId === 3) {
         program = language.REPORT.LEADERSHIP;
       }
 
-      const gender = "male"; // todo --- mostafa
-      const allStrength = true; // todo --- mostafa
-
-      const result = 40; // todo --- mostafa ---> quiz.conclusion?.generalMarkPercentage
-      const averageResult = 70; // todo --- mostafa ---> test.benchmarkMeanPercentage
+      const result = 40;
+      const averageResult = 70;
 
       let levelSentens;
       if (result === averageResult) {
@@ -43,10 +43,7 @@ module.exports = function (report) {
 
       const data = {
         // -----all images---------
-        heroLogo: utils.IMGToURI("hero-logo.png"),
         rightCheck: utils.IMGToURI("right-check.png"),
-        backgroundSmallTitle: utils.IMGToURI("background-small-title.jpg"),
-        backgroundBigTitle: utils.IMGToURI("background-big-title.jpg"),
         arrowGreenUp: utils.IMGToURI("arrow-green-up.png"),
         arrowGreyDown: utils.IMGToURI("arrow-grey-down.png"),
         arrowOrangeUp: utils.IMGToURI("arrow-orange-up.png"),
@@ -59,11 +56,28 @@ module.exports = function (report) {
         note4: utils.IMGToURI("note4.png"),
         treePapers: utils.IMGToURI("tree-papers.png"),
 
-        // todo --- mostafa
         // -----------main variables-------
         programId: 2,
         allStrength: allStrength,
         levelSentens: levelSentens,
+
+        // todo---new-------------------------
+        lang: "ar",
+
+        //todo update these images
+        heroLogo:
+          lang === "en"
+            ? utils.IMGToURI("hero-logo-en.png")
+            : utils.IMGToURI("hero-logo.png"),
+        backgroundSmallTitle:
+          lang === "en"
+            ? utils.IMGToURI("background-small-title-en.jpg")
+            : utils.IMGToURI("background-small-title.jpg"),
+        backgroundBigTitle:
+          lang === "en"
+            ? utils.IMGToURI("background-big-title-en.jpg")
+            : utils.IMGToURI("background-big-title.jpg"),
+        // todo -----------------end of new code --------------
 
         // ---page 1 ---
         title: program.TITLE,
@@ -71,8 +85,7 @@ module.exports = function (report) {
         date: moment().format("DD/MM/YYYY"),
         usernameTitle: language.REPORT.REPORT_USER,
         dateTitle: language.REPORT.REPORT_DATE,
-        // todo --- mostafa
-        username: "محمد خالد",
+        username: "محمد سعيد",
 
         // ---page 2 ---
         aboutTitle: language.REPORT.TITLE_ABOUT,
@@ -80,7 +93,7 @@ module.exports = function (report) {
 
         // ---page 3 ---
         resultDescriptionTitle: language.REPORT.TITLE_RESULT_DESCRIPTION,
-        // todo --- mostafa
+
         resultDescription: "هات الوصف يا مصطفي وحطه هنا",
 
         // ---page 4 ---
@@ -89,7 +102,7 @@ module.exports = function (report) {
           : language.REPORT.TITLE_POINTS,
         mainLevel: program.MAIN_LEVEL,
         fullPoint: language.REPORT.FULL_POINT,
-        mediumPoint: language.REPORT.MEDUIM_POINT,
+        mediumPoint: language.REPORT.MEDIUM_POINT,
         smallPoint: language.REPORT.SMALL_POINT,
 
         // ---page 5 ---
@@ -108,7 +121,9 @@ module.exports = function (report) {
           language.REPORT.TITLE_DEVELOPMENT_RECOMMENDATIONS,
         recommendationsTitles: language.REPORT.RECOMMENDATIONS.TITLES,
         recommendationsDescriptions:
-          gender === "male"
+          lang === "en"
+            ? language.REPORT.RECOMMENDATIONS.MALE
+            : gender === "male"
             ? language.REPORT.RECOMMENDATIONS.MALE
             : language.REPORT.RECOMMENDATIONS.FEMALE,
 
@@ -121,7 +136,9 @@ module.exports = function (report) {
           utils.IMGToURI("note4.png"),
         ],
         notesDescription:
-          gender === "male"
+          lang === "en"
+            ? language.REPORT.NOTES.MALE
+            : gender === "male"
             ? language.REPORT.NOTES.MALE
             : language.REPORT.NOTES.FEMALE,
       };
