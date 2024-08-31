@@ -82,6 +82,9 @@
     "notesTitle": {
       "type": "string"
     },
+    "resultDescription": {
+      "type": "string"
+    },
     "cards": {
       "type": "array",
       "itemType": "string"
