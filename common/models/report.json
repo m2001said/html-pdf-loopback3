@@ -116,6 +116,12 @@
     "notesDescription": {
       "type": "array",
       "itemType": "string"
+    },
+    "mainLevel": {
+      "type": "string"
+    },
+    "levelSentens": {
+      "type": "string"
     }
   },
   "validations": [],

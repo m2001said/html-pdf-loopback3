@@ -17,7 +17,7 @@ module.exports = function (report) {
       const language = ar; // todo --- mostafa
 
       let program;
-      let programId = 2; // todo --- mostafa
+      let programId = 3; // todo --- mostafa
       if (programId === 2) {
         program = language.REPORT.SELF_CONFIDENCE;
       } else if (programId === 3) {
@@ -26,6 +26,20 @@ module.exports = function (report) {
 
       const gender = "male"; // todo --- mostafa
       const allStrength = true; // todo --- mostafa
+
+      const result = 40; // todo --- mostafa ---> quiz.conclusion?.generalMarkPercentage
+      const averageResult = 70; // todo --- mostafa ---> test.benchmarkMeanPercentage
+
+      let levelSentens;
+      if (result === averageResult) {
+        levelSentens = language.REPORT.LEVEL.SAME + " " + program.LEVEL_COMPARE;
+      } else if (result > averageResult) {
+        levelSentens =
+          language.REPORT.LEVEL.LARGER + " " + program.LEVEL_COMPARE;
+      } else if (result < averageResult) {
+        levelSentens =
+          language.REPORT.LEVEL.SMALLER + " " + program.LEVEL_COMPARE;
+      }
 
       const data = {
         // -----all images---------
@@ -45,9 +59,11 @@ module.exports = function (report) {
         note4: utils.IMGToURI("note4.png"),
         treePapers: utils.IMGToURI("tree-papers.png"),
 
+        // todo --- mostafa
         // -----------main variables-------
         programId: 2,
         allStrength: allStrength,
+        levelSentens: levelSentens,
 
         // ---page 1 ---
         title: program.TITLE,
@@ -71,6 +87,7 @@ module.exports = function (report) {
         pointsTitle: allStrength
           ? language.REPORT.TITLE_POINTS_STRONG
           : language.REPORT.TITLE_POINTS,
+        mainLevel: program.MAIN_LEVEL,
 
         // ---page 5 ---
         pointsRestTitle: allStrength
