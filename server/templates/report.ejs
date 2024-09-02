@@ -41,59 +41,16 @@
         gap: 20px;
       }
 
-      body {
-        counter-reset: sectionCounter;
-      }
-
-      /* Increment the counter for each section and display it */
-      section {
-        counter-increment: sectionCounter;
-        position: relative;
-        page-break-after: always;
-      }
-
-      /* Create the page number display */
-      section::after {
-        content: counter(sectionCounter);
-        position: absolute;
-        bottom: 29px;
-        right: 63px;
-        font-size: 10px;
-        width: 16px;
-        height: 16px;
-        border: solid 0.1px var(--grey-light);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-
-      section::before {
-        content: "تقرير نتيجة مقياس الثقة بالنفس";
-        font-size: 5.5px;
-        color: var(--grey);
-        position: absolute;
-        bottom: 34px;
-        right: 85px;
-      }
-      section:first-child::before,
-      section:first-child::after {
-        content: none;
-      }
-
-      /* @page {
-        size: portrait;
-        margin: 15%;
-      } */
       .pdf-page {
-        /* page-break-after: always;
-        break-after: page; */
+        page-break-after: always;
         width: 595px;
         height: 842px;
         background-size: contain;
         background-repeat: no-repeat;
         position: relative;
+      }
+      .pdf-page:last-child {
+        page-break-after: auto;
       }
       .page-title {
         position: absolute;
@@ -107,6 +64,9 @@
         font-size: 16px;
         line-height: 28px;
         font-weight: 500;
+      }
+      .ltr .page-description {
+        line-height: 24px;
       }
 
       .text-10-bold {
@@ -130,24 +90,49 @@
       .gap-5 {
         gap: 5px;
       }
-      .page-footer {
+      body {
+        counter-reset: sectionCounter;
+      }
+      /* -------------footer------------ */
+      section {
+        counter-increment: sectionCounter;
+        position: relative;
+        page-break-after: always;
+      }
+      section::after {
+        content: counter(sectionCounter);
         position: absolute;
         bottom: 29px;
         right: 63px;
-        gap: 7px;
-      }
-      .page-footer-number {
+        font-size: 10px;
         width: 16px;
         height: 16px;
-        border: solid 0.1px var(--grey);
+        border: solid 0.1px var(--grey-light);
         border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
       }
-      .page-footer-number p {
-        font-size: 10px;
+      .ltr section::after {
+        right: auto;
+        left: 63px;
       }
-      .page-footer-text {
+      section::before {
+        content: "<%= title %> ";
         font-size: 5.5px;
         color: var(--grey);
+        position: absolute;
+        bottom: 34px;
+        right: 85px;
+      }
+      .ltr section::before {
+        right: auto;
+        left: 85px;
+      }
+      section:first-child::before,
+      section:first-child::after {
+        content: none;
       }
 
       /* --------------  progress-circle-bar ----------------- */
@@ -255,7 +240,7 @@
         font-weight: bold;
       }
       .header-points {
-        gap: 4px;
+        gap: 8px;
         font-size: 12px;
       }
       .header-point {
@@ -266,6 +251,10 @@
       }
       .header-point span {
         font-weight: bold;
+      }
+      .header-point img {
+        width: 7px;
+        height: 7px;
       }
       .header-point-1 {
         background: var(--green-light);
@@ -335,9 +324,15 @@
       .percentage-result {
         border: 1px solid red;
         display: flex;
+        align-items: center;
+        justify-content: center;
         gap: 2px;
         border-radius: 20px;
         padding: 2px 7px;
+      }
+      .percentage-result img {
+        width: 6px;
+        height: 9px;
       }
       .shadow-card .percentage-result p {
         font-size: 14px;
@@ -423,6 +418,10 @@
         font-weight: bold;
         position: relative;
       }
+      .page-7-card-num img {
+        width: 40px;
+        height: 29px;
+      }
       .page-7-card-num p {
         color: var(--green);
         position: absolute;
@@ -433,6 +432,13 @@
       /* ---------------8 ------------- */
       .page-8-content {
         gap: 50px;
+      }
+      .page-8-card {
+        gap: 15px;
+      }
+      .page-8-card img {
+        width: 52px;
+        height: 52px;
       }
     </style>
   </head>
