@@ -48,10 +48,48 @@
         background-size: contain;
         background-repeat: no-repeat;
         position: relative;
+        counter-increment: sectionCounter;
       }
       .pdf-page:last-child {
         page-break-after: auto;
       }
+      /* -------------footer------------ */
+      .pdf-page::after {
+        content: counter(sectionCounter);
+        position: absolute;
+        bottom: 29px;
+        right: 63px;
+        font-size: 10px;
+        width: 16px;
+        height: 16px;
+        border: solid 0.1px var(--grey-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .ltr .pdf-page::after {
+        right: auto;
+        left: 63px;
+      }
+      .pdf-page::before {
+        content: "<%= title %> ";
+        font-size: 5.5px;
+        color: var(--grey);
+        position: absolute;
+        bottom: 34px;
+        right: 85px;
+      }
+      .ltr .pdf-page::before {
+        right: auto;
+        left: 85px;
+      }
+      .pdf-page:first-child::before,
+      .pdf-page:first-child::after {
+        content: none;
+      }
+
       .page-title {
         position: absolute;
         font-size: 14px;
@@ -92,47 +130,6 @@
       }
       body {
         counter-reset: sectionCounter;
-      }
-      /* -------------footer------------ */
-      section {
-        counter-increment: sectionCounter;
-        position: relative;
-        page-break-after: always;
-      }
-      section::after {
-        content: counter(sectionCounter);
-        position: absolute;
-        bottom: 29px;
-        right: 63px;
-        font-size: 10px;
-        width: 16px;
-        height: 16px;
-        border: solid 0.1px var(--grey-light);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-      .ltr section::after {
-        right: auto;
-        left: 63px;
-      }
-      section::before {
-        content: "<%= title %> ";
-        font-size: 5.5px;
-        color: var(--grey);
-        position: absolute;
-        bottom: 34px;
-        right: 85px;
-      }
-      .ltr section::before {
-        right: auto;
-        left: 85px;
-      }
-      section:first-child::before,
-      section:first-child::after {
-        content: none;
       }
 
       /* --------------  progress-circle-bar ----------------- */
@@ -220,7 +217,7 @@
         gap: 20px;
       }
       .shadow-card {
-        width: 547px;
+        /* width: 547px; */
       }
       .card {
         box-shadow: none;
