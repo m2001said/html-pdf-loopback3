@@ -1,14 +1,73 @@
 {
   "REPORT": {
-    "TITLE": "Self-Confidence Test Result Report",
-    "SUBTITLE": "Thatek Program for Enhancing Self-Confidence",
-    "DESCRIPTION": "Your Result Description",
-    "RESULT_DESCRIPTION": "You sometimes believe in the abilities and experiences you possess, strive to maintain balance in your body language when speaking in front of others, seek to build and maintain social relationships, and have good capabilities that you can develop to speak fluently. You have good potential that can help you deal with criticism, struggle with yourself to admit your mistakes and take responsibility for them, tend to rely on yourself, make an effort to claim your rights, and may accept the flaws that cannot be changed.",
-    "PROGRAM_TITLE": "About the Program",
-    "CARDS": [
-      "This program has been developed with great care and professionalism, based on the latest scientific research and innovative techniques in the field of measuring and developing self-confidence. Significant efforts have been made to ensure its compliance with the best global standards in the field of measurement and evaluation, and it has been designed to be an accurate and comprehensive tool that meets the developmental needs of individuals in the field of self-confidence.",
-      "This program includes a measure of self-confidence standards. This measure has been objectively judged and thoroughly reviewed by distinguished scientists and experts in various fields, including mental health, psychological counseling, personality psychology, as well as measurement and evaluation. They have confirmed the measure's distinction and effectiveness, stating that it is capable of providing an accurate assessment of self-confidence standards, making it a strong competitor in the global market.",
-      "The previous trial version of this program was applied to a group of individuals, who were asked to evaluate the program accurately and determine their level of satisfaction with its results objectively. They expressed their admiration for the level of accuracy and detail provided by the program, as well as its ability to improve self-confidence and address related weaknesses in an integrated and effective manner."
-    ]
+    "TITLE_ABOUT": "About the Program",
+    "TITLE_RESULT_DESCRIPTION": "Result Description",
+    "TITLE_POINTS": "Your Strengths and Weaknesses",
+    "TITLE_POINTS_STRONG": "Your Result Details",
+    "TITLE_POINTS_REST": "Continued Details of Your Strengths and Weaknesses",
+    "TITLE_POINTS_REST_STRONG": "Continued Details of Your Result",
+    "TITLE_COMPARISON": "Comparative Results Analysis",
+    "TITLE_DEVELOPMENT_RECOMMENDATIONS": "Developmental Recommendations",
+    "TITLE_NOTES": "Notes",
+    "REPORT_USER": "Report Owner",
+    "REPORT_DATE": "Issue Date",
+
+    "FULL_POINT": "Strengths",
+    "MEDIUM_POINT": "Improvement",
+    "SMALL_POINT": "Weaknesses",
+
+    "LEVEL": {
+      "LEVEL_DESC": "Here, you'll find a comparison of your level to the average results of others who took the same assessment.",
+      "YOUR_LEVEL": "Your Level",
+      "THE_LEVEL": "General Level",
+      "LARGER": "Your level is higher than the general average for those who took",
+      "SMALLER": "Your level is lower than the general average for those who took",
+      "SAME": "Your level matches the general average for those who took"
+    },
+
+    "SELF_CONFIDENCE": {
+      "TITLE": "Self-Confidence Assessment Report",
+      "SUBTITLE": "Thatek Program for Self-Confidence",
+      "MAIN_LEVEL": "Your Overall Self-Confidence Level",
+      "LEVEL_COMPARE": "Self-Confidence Level by",
+      "CARDS": [
+        "This program has been meticulously and professionally developed, drawing on the latest scientific research and innovative techniques in the field of self-confidence measurement and development. Significant efforts have been made to ensure its alignment with the highest global standards in assessment and evaluation. It is designed to be a precise and comprehensive tool that meets the developmental needs of individuals in the area of self-confidence.",
+        "The program includes a self-confidence measurement scale, which has been objectively validated and carefully reviewed by distinguished scholars and experts across various fields, including mental health, psychological counseling, personality psychology, as well as measurement and evaluation. These experts have confirmed the scale’s excellence and effectiveness, noting its capability to provide an accurate assessment of self-confidence standards, making it a strong competitor in the global market.",
+        "A previous pilot version of this program was tested on a group of individuals who were asked to evaluate the program meticulously and objectively assess their level of satisfaction with its results. They expressed their admiration for the program’s level of accuracy and detail, as well as its ability to improve self-confidence and comprehensively address associated weaknesses effectively."
+      ]
+    },
+    "LEADERSHIP": {
+      "TITLE": "Leadership Skills Assessment Report",
+      "SUBTITLE": "Thatek Program for Leadership Skills",
+      "MAIN_LEVEL": "Your Overall Leadership Skills Level",
+      "LEVEL_COMPARE": "Leadership Skills Level by",
+      "CARDS": [
+        "This program has been meticulously and professionally developed, drawing on the latest scientific research and innovative techniques in the field of leadership competency measurement and development. Significant efforts have been made to ensure its alignment with the highest global standards in assessment and evaluation. It is designed to be a precise and comprehensive tool that meets the developmental needs of leaders across various sectors, whether in government or private industry.",
+        "The program includes a comprehensive leadership competency scale, which has been objectively validated and thoroughly reviewed by distinguished scholars and experts across various fields, including management and planning, psychological counseling, personality psychology, as well as measurement and evaluation. These experts have confirmed the scale's excellence and effectiveness, noting its capability to provide an accurate and comprehensive assessment of leadership competencies, making it a strong competitor in the global market.",
+        "A previous pilot version of this program was applied to a group of leaders holding prominent positions in both the public and private sectors, as well as to another group of individuals aspiring to leadership roles. They expressed their admiration for the program's level of accuracy and detail, as well as its ability to improve leadership performance and contribute to the development of leadership competencies."
+      ]
+    },
+
+    "RECOMMENDATIONS": {
+      "TITLES": [
+        "Your Developmental Needs:",
+        "Your Individual Development Plan (IDP):",
+        "Your Development Journey:"
+      ],
+      "MALE": [
+        "Based on the results of the scale and your individual development plan (IDP), it has been determined that you need to execute numerous developmental tasks to enhance your self-confidence and achieve an exceptional level.",
+        "Your IDP has been prepared, which includes the development of several important competencies. You can review the details of your plan in the Thatek app.",
+        "All developmental tasks have been organized into a customized development journey designed according to a scientific methodology. These tasks are presented in a gamified manner, combining benefit and enjoyment, contributing to an engaging and effective learning experience."
+      ]
+    },
+
+    "NOTES": {
+      "MALE": [
+        "The accuracy of your results on this scale depends on the precision of your answers. If your responses were not accurate, we recommend retaking the assessment.",
+        "Your progress in implementing your IDP will help boost your self-confidence and equip you to achieve your life goals efficiently.",
+        "Please regularly follow the Thatek app to ensure adherence to task completion and the achievement of specified developmental goals.",
+        "This report is confidential and personal and should not be shared without the owner’s permission."
+      ]
+    }
   }
 }

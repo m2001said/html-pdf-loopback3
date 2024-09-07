@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="rtl">
+<html dir="<%= lang === 'en' ? 'ltr' : 'rtl' %>">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,10 +48,48 @@
         background-size: contain;
         background-repeat: no-repeat;
         position: relative;
+        counter-increment: sectionCounter;
       }
       .pdf-page:last-child {
         page-break-after: auto;
       }
+      /* -------------footer------------ */
+      .pdf-page::after {
+        content: counter(sectionCounter);
+        position: absolute;
+        bottom: 29px;
+        right: 63px;
+        font-size: 10px;
+        width: 16px;
+        height: 16px;
+        border: solid 0.1px var(--grey-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .ltr .pdf-page::after {
+        right: auto;
+        left: 63px;
+      }
+      .pdf-page::before {
+        content: "<%= title %> ";
+        font-size: 5.5px;
+        color: var(--grey);
+        position: absolute;
+        bottom: 34px;
+        right: 85px;
+      }
+      .ltr .pdf-page::before {
+        right: auto;
+        left: 85px;
+      }
+      .pdf-page:first-child::before,
+      .pdf-page:first-child::after {
+        content: none;
+      }
+
       .page-title {
         position: absolute;
         font-size: 14px;
@@ -64,6 +102,9 @@
         font-size: 16px;
         line-height: 28px;
         font-weight: 500;
+      }
+      .ltr .page-description {
+        line-height: 24px;
       }
 
       .text-10-bold {
@@ -89,39 +130,6 @@
       }
       body {
         counter-reset: sectionCounter;
-      }
-      /* -------------footer------------ */
-      section {
-        counter-increment: sectionCounter;
-        position: relative;
-        page-break-after: always;
-      }
-      section::after {
-        content: counter(sectionCounter);
-        position: absolute;
-        bottom: 29px;
-        right: 63px;
-        font-size: 10px;
-        width: 16px;
-        height: 16px;
-        border: solid 0.1px var(--grey-light);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-      section::before {
-        content: "<%= title %> ";
-        font-size: 5.5px;
-        color: var(--grey);
-        position: absolute;
-        bottom: 34px;
-        right: 85px;
-      }
-      section:first-child::before,
-      section:first-child::after {
-        content: none;
       }
 
       /* --------------  progress-circle-bar ----------------- */
@@ -195,27 +203,38 @@
       /* --------------  page-4 ----------------- */
       .page-4-content,
       .page-6-content {
-        padding: 125px 24px 0 24px;
-        gap: 20px;
+        padding: 110px 24px 0 24px;
+        gap: 11px;
       }
-      .shadow-card,
+      .shadow-card {
+        display: flex;
+        border: solid 1px var(--grey-light);
+        box-shadow: 0px 4px 8px var(--grey-light);
+        justify-content: space-between;
+        padding: 8px;
+        border-radius: 12px;
+        gap: 20px;
+        width: 530px;
+      }
+
       .card {
         display: flex;
         border: solid 1px var(--grey-light);
         box-shadow: 0px 4px 8px var(--grey-light);
         justify-content: space-between;
-        padding: 10px;
+        padding: 8px;
         border-radius: 12px;
         gap: 20px;
-      }
-      .card {
         box-shadow: none;
       }
       .header-result {
-        background: var(--green-light);
         padding: 15px 20px;
         border-radius: 12px;
         gap: 5px;
+      }
+      .result-title {
+        text-align: center;
+        white-space: nowrap;
       }
       .heder-desc-title {
         font-size: 16px;
@@ -227,8 +246,9 @@
       }
       .header-point {
         padding: 7px 15px;
-        gap: 11px;
+        gap: 8px;
         border-radius: 20px;
+        white-space: nowrap;
       }
       .header-point span {
         font-weight: bold;
@@ -251,22 +271,25 @@
       }
       .capacity-result {
         display: flex;
+        width: 100%;
+        height: 55px;
+        max-width: 530px;
         border: solid 1px var(--grey-light);
         border-radius: 12px;
-        background: var(--white);
-        padding: 15px;
-        gap: 20px;
+        padding: 8px;
         justify-content: space-between;
+        gap: 7px;
       }
       .capacity-result .result-text {
         font-size: 12.5px;
-        bottom: 28px;
+        bottom: 22px;
       }
       .capacity-result .result-text span {
         font-size: 6.4px;
       }
       .capacity-called {
         align-items: flex-start;
+        width: 132px;
       }
       .capacity-called .header-point {
         font-size: 7.5px;
@@ -279,23 +302,21 @@
       }
 
       .capacity-desc {
-        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 325px;
         background: var(--grey-very-light);
         border-radius: 12px;
       }
       .capacity-desc p {
-        padding: 20px 12px;
+        padding: 8px;
         font-size: 8px;
         font-weight: 500;
       }
 
       /* --------------  page-6 ----------------- */
       /* --------------  percentage-result ----------------- */
-      .page-6-content .shadow-card {
-        padding: 20px 20px 20px 10px;
-        max-width: 550px;
-        width: 100%;
-      }
       .percentage-result {
         border: 1px solid red;
         display: flex;
@@ -303,7 +324,16 @@
         justify-content: center;
         gap: 2px;
         border-radius: 20px;
-        padding: 2px 7px;
+        font-size: 12px;
+        font-weight: 500;
+        position: relative;
+        width: 52px;
+        direction: rtl;
+      }
+      .percentage-result small {
+        position: absolute;
+        right: 11px;
+        font-size: 10.5px;
       }
       .percentage-result img {
         width: 6px;
@@ -312,7 +342,21 @@
       .shadow-card .percentage-result p {
         font-size: 14px;
         font-weight: bold;
+        margin-inline-start: 7px;
       }
+
+      .capacity-level .percentage-result {
+        height: 14px;
+        width: 42px;
+      }
+      .capacity-level .percentage-result small {
+        right: 8px;
+        font-size: 8px;
+      }
+      .capacity-level .percentage-result p {
+        margin-inline-start: 5px;
+      }
+
       .page-6-header {
         gap: 5px;
       }
@@ -345,7 +389,12 @@
       .capacity-level {
         justify-content: space-between;
         align-items: center;
-        width: 101%;
+        width: 530px;
+      }
+      .capacity-level-title {
+        width: 132px;
+        font-size: 10px;
+        font-weight: bold;
       }
 
       /* -------- */
@@ -417,7 +466,7 @@
       }
     </style>
   </head>
-  <body>
+  <body class="<%= lang === 'en' ? 'ltr' : 'rtl' %>">
     <!-- ------  الصفحة الرئيسية ----------- -->
     <section class="flex flex-col pdf-page page-1">
       <div class="flex flex-col">
@@ -619,7 +668,7 @@
         </div>
 
         <div class="card capacity-level">
-          <p class="text-10-bold">الاعتقاد في القدرات الشخصية</p>
+          <p class="capacity-level-title">الاعتقاد في القدرات الشخصية</p>
           <div
             class="percentage-result"
             style="border-color: #f0f9f1; color: #3bae49"
