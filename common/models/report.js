@@ -18,7 +18,7 @@ module.exports = function (report) {
 
       const lang = "ar";
       const gender = "male";
-      const allStrength = false;
+      const allStrength = true;
       let program;
       let programId = 3;
       if (programId === 2) {
@@ -39,6 +39,54 @@ module.exports = function (report) {
       } else if (result < averageResult) {
         levelSentens =
           language.REPORT.LEVEL.SMALLER + " " + program.LEVEL_COMPARE;
+      }
+
+      const backgroundSmallTitle =
+        lang === "en"
+          ? utils.IMGToURI("background-small-title-en.jpg")
+          : utils.IMGToURI("background-small-title.jpg");
+      const resultDescriptionTitle = language.REPORT.TITLE_RESULT_DESCRIPTION;
+      const resultDescriptionTitleRest =
+        language.REPORT.TITLE_POINTS_STRONG_RESET;
+      const resultDescriptionStrength =
+        gender === "male" ? program.RESULT.MALE : program.RESULT.FEMALE;
+      const rightCheck = utils.IMGToURI("right-check.png");
+      function strengthResultDescription(array) {
+        let sections;
+
+        if (programId === 3) {
+          sections = [array.slice(0, 3), array.slice(3, 7), array.slice(7, 10)];
+        } else if (programId === 2) {
+          sections = [array];
+        }
+
+        return sections
+          .map(
+            (sectionItems, index) => `
+          <section
+            class="flex flex-col pdf-page"
+            style="background-image: url(${backgroundSmallTitle})"
+          >
+            <p class="page-title">${
+              index === 0 ? resultDescriptionTitle : resultDescriptionTitleRest
+            }</p>
+      
+            <div class="flex flex-col page-2-content">
+              ${sectionItems
+                .map(
+                  (item) => `
+                <div class="flex page-2-card">
+                  <img src="${rightCheck}" alt="right check" />
+                  <p class="page-description">${item}</p>
+                </div>
+              `
+                )
+                .join("")}
+            </div>
+          </section>
+        `
+          )
+          .join(""); // Join all sections into one string
       }
 
       const data = {
@@ -95,6 +143,11 @@ module.exports = function (report) {
         resultDescriptionTitle: language.REPORT.TITLE_RESULT_DESCRIPTION,
 
         resultDescription: "هات الوصف يا مصطفي وحطه هنا",
+        // TODO NEW -------->
+        resultDescriptionTitleRest: language.REPORT.TITLE_POINTS_STRONG_RESET,
+        resultDescriptionStrength: strengthResultDescription(
+          resultDescriptionStrength
+        ),
 
         // ---page 4 ---
         pointsTitle: allStrength

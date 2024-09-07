@@ -214,7 +214,7 @@
         padding: 8px;
         border-radius: 12px;
         gap: 20px;
-        width: 530px;
+        width: 520px !important;
       }
 
       .card {
@@ -694,29 +694,7 @@
       </div>
     </section>
     <!-- ------  وصف نتيجتك ----------- -->
-    <% if (allStrength) { %>
-    <section
-      class="flex flex-col pdf-page justify-start"
-      style="background-image: url(<%= backgroundSmallTitle %>)"
-    >
-      <p class="page-title"><%= resultDescriptionTitle %></p>
-
-      <div class="page-3-content">
-        <!--todo -- mostafa remove this -->
-        <p class="page-description"><%= resultDescription %></p>
-
-        <!--todo -- mostafa add variable  array in this -->
-        <!-- <div class="flex flex-col page-2-content">
-          <% cards.forEach(function(card) { %>
-          <div class="flex page-2-card">
-            <img src="<%= rightCheck %>" alt="right check" />
-            <p class="page-description"><%= card %></p>
-          </div>
-          <% }); %>
-        </div> -->
-      </div>
-    </section>
-    <% } %>
+    <% if (allStrength) { %> <%- resultDescriptionStrength %> <% } %>
     <!-- ------  التوصيات التطويرية ----------- -->
     <% if (!allStrength) { %>
     <section
